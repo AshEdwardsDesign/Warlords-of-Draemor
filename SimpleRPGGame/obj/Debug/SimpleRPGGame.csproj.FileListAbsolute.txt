@@ -1,0 +1,7 @@
+C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\bin\Debug\SimpleRPGGame.exe.config
+C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\bin\Debug\SimpleRPGGame.exe
+C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\bin\Debug\SimpleRPGGame.pdb
+C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\obj\Debug\SimpleRPGGame.csprojAssemblyReference.cache
+C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\obj\Debug\SimpleRPGGame.csproj.CoreCompileInputs.cache
+C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\obj\Debug\SimpleRPGGame.exe
+C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\obj\Debug\SimpleRPGGame.pdb
