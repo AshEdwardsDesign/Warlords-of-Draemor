@@ -92,6 +92,15 @@ namespace WarlordsOfDraemor
 
             Console.WriteLine();
             Console.WriteLine("Press enter to continue.");
+            Console.ReadLine();
+        }
+
+        // Display header bar
+        public void DisplayHeaderBar()
+        {
+            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.WriteLine($"{fullName} of {homeName}\t\tHealth: {healthPercentage.ToString("F2")}%\t\tArmor: {currentArmor}\t\tLevel: 0\t\tXP: 0 / 0");
+            Console.WriteLine("--------------------------------------------------------------------------------");
         }
 
 

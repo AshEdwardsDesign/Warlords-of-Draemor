@@ -38,6 +38,9 @@ namespace WarlordsOfDraemor
                 case "1":
                     Character player = new Character();
                     player.NewCharacter();
+                    Console.Clear();
+                    player.DisplayHeaderBar();
+                    Console.ReadLine();
                     break;
                 case "2":
                     break;

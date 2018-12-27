@@ -5,3 +5,10 @@ C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\obj\Debug\SimpleRPGGa
 C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\obj\Debug\SimpleRPGGame.csproj.CoreCompileInputs.cache
 C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\obj\Debug\SimpleRPGGame.exe
 C:\Users\AEdwards\source\repos\SimpleRPGGame\SimpleRPGGame\obj\Debug\SimpleRPGGame.pdb
+C:\Users\AEdwards\source\repos\Warlords-of-Draemor\SimpleRPGGame\bin\Debug\SimpleRPGGame.exe.config
+C:\Users\AEdwards\source\repos\Warlords-of-Draemor\SimpleRPGGame\bin\Debug\SimpleRPGGame.exe
+C:\Users\AEdwards\source\repos\Warlords-of-Draemor\SimpleRPGGame\bin\Debug\SimpleRPGGame.pdb
+C:\Users\AEdwards\source\repos\Warlords-of-Draemor\SimpleRPGGame\obj\Debug\SimpleRPGGame.csprojAssemblyReference.cache
+C:\Users\AEdwards\source\repos\Warlords-of-Draemor\SimpleRPGGame\obj\Debug\SimpleRPGGame.csproj.CoreCompileInputs.cache
+C:\Users\AEdwards\source\repos\Warlords-of-Draemor\SimpleRPGGame\obj\Debug\SimpleRPGGame.exe
+C:\Users\AEdwards\source\repos\Warlords-of-Draemor\SimpleRPGGame\obj\Debug\SimpleRPGGame.pdb
