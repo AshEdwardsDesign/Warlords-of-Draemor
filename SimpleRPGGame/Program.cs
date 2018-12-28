@@ -6,7 +6,7 @@ namespace WarlordsOfDraemor
     {
         static void Main(string[] args)
         {
-
+            
             bool replay = true;
 
             while (replay)
@@ -25,9 +25,8 @@ namespace WarlordsOfDraemor
             Console.WriteLine();
 
             Console.WriteLine("1. New Game");
-            Console.WriteLine("2. Encyclopedia");
-            Console.WriteLine("3. About");
-            Console.WriteLine("4. Quit");
+            Console.WriteLine("2. About");
+            Console.WriteLine("3. Quit");
 
             Console.WriteLine();
             Console.Write("Please choose a number: ");
@@ -36,17 +35,12 @@ namespace WarlordsOfDraemor
             switch (mainMenuChoice)
             {
                 case "1":
-                    Character player = new Character();
-                    player.NewCharacter();
-                    Console.Clear();
-                    player.DisplayHeaderBar();
-                    Console.ReadLine();
+                    StartGame();
                     break;
                 case "2":
+                    AboutPage();
                     break;
                 case "3":
-                    break;
-                case "4":
                     Console.Clear();
                     Console.WriteLine("The game will now exit. Thank you for playing.");
                     Console.ReadLine();

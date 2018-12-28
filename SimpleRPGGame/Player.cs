@@ -2,7 +2,7 @@
 
 namespace WarlordsOfDraemor
 {
-    class Character
+    public class Player
     {
 
         // GENERAL INFO
@@ -16,6 +16,9 @@ namespace WarlordsOfDraemor
         private int intelligence;
         private int dexterity;
         private int constitution;
+        private int level;
+        private int xp;
+        private int nextLevelXP;
 
         // HEALTH & ARMOR
         private int maxHealth;
@@ -30,7 +33,7 @@ namespace WarlordsOfDraemor
         }
 
         // CHARACTER CREATION
-        public void NewCharacter()
+        public Player()
         {
             Console.Clear();
             Console.WriteLine("Welcome to the new Character Creation Wizard!");
@@ -54,6 +57,9 @@ namespace WarlordsOfDraemor
             intelligence = 1;
             dexterity = 1;
             constitution = 1;
+            level = 1;
+            xp = 0;
+            nextLevelXP = 100;
 
             maxHealth = 91;
             currentHealth = 42;
