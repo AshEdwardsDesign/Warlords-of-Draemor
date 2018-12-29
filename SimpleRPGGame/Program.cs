@@ -35,7 +35,10 @@ namespace WarlordsOfDraemor
             switch (mainMenuChoice)
             {
                 case "1":
-                    StartGame();
+                    // StartGame();
+                    Console.Clear();
+                    Console.WriteLine("This is where a new game would start!");
+                    Console.ReadLine();
                     break;
                 case "2":
                     AboutPage();
@@ -49,8 +52,7 @@ namespace WarlordsOfDraemor
                     Console.WriteLine("Sorry, I didn't recognise that option!");
                     break;
             }
-
-            Console.ReadLine();
+            
             return true;
         }
     }

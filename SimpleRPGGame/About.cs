@@ -6,6 +6,7 @@ namespace WarlordsOfDraemor
     {
         static void AboutPage()
         {
+            Console.Clear();
             Console.WriteLine("This is the about page. TBC.");
             Console.ReadLine();
         }
