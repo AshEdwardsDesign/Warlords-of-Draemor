@@ -2,7 +2,7 @@
 
 namespace WarlordsOfDraemor
 {
-    partial class Program
+    public partial class Program
     {
         static void Main(string[] args)
         {
@@ -14,7 +14,7 @@ namespace WarlordsOfDraemor
 
         }
 
-        static bool MainMenu()
+        public static bool MainMenu()
         {
             Console.Clear();
             Console.WriteLine("WARLORDS OF DRAEMOR");

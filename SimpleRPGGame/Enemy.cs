@@ -27,6 +27,31 @@ namespace WarlordsOfDraemor
             healthPercentage = ((decimal)currentHealth / (decimal)maxHealth) * 100M;
         }
 
+        // DEAL DAMAGE
+        public void DealDamage(Player player)
+        {
+            player.TakeDamage(5);
+        }
+
+        // TAKE DAMAGE
+        public void TakeDamage(int dmgReceived, Player player)
+        {
+            currentHealth -= dmgReceived;
+            if (currentHealth <= 0)
+                Death(player);
+        }
+
+        public int calcXPValue()
+        {
+            return 25;
+        }
+
+        // DEATH 
+        public void Death(Player player)
+        {
+            player.GainXP(calcXPValue());
+        }
+
         // ENEMY CREATION (CONSTRUCTOR)
         public Enemy(Player player)
         {

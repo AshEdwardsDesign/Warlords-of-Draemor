@@ -19,6 +19,7 @@ namespace WarlordsOfDraemor
         private int level;
         private int xp;
         private int nextLevelXP;
+        private int skillPoints;
 
         // HEALTH & ARMOR
         private int maxHealth;
@@ -30,6 +31,48 @@ namespace WarlordsOfDraemor
         public void calcHealthPercentage()
         {
             healthPercentage = ((decimal)currentHealth / (decimal)maxHealth) * 100M;
+        }
+
+        // GAIN XP
+        public void GainXP(int xpGained)
+        {
+            xp += xpGained;
+            Console.WriteLine($"You have gained {xpGained} XP.");
+            if (xp >= nextLevelXP)
+                LevelUp();
+        }
+
+        // LEVEL UP 
+        public void LevelUp()
+        {
+            skillPoints++;
+            double temp = nextLevelXP;
+            temp *= 1.5;
+            nextLevelXP = (int)temp;
+            maxHealth += 10;
+            Console.WriteLine($"LEVEL UP! You are now level {level}! You have gained a skill point and +10 max HP!");
+        }
+
+        // DEAL DAMAGE
+        public void DealDamage(Enemy enemy)
+        {
+            enemy.TakeDamage(10);
+        }
+
+        // TAKE DAMAGE
+        public void TakeDamage(int dmgReceived)
+        {
+            currentHealth -= dmgReceived;
+            if (currentHealth <= 0)
+                PlayerDeath();
+        }
+
+        // DEATH 
+        public void PlayerDeath()
+        {
+            Console.WriteLine("You are dead! Press enter to return the Main Menu.");
+            Console.ReadLine();
+            Program.MainMenu();
         }
 
         // CHARACTER CREATION
@@ -105,7 +148,7 @@ namespace WarlordsOfDraemor
         public void DisplayHeaderBar()
         {
             Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.WriteLine($"{fullName} of {homeName}\t\tHealth: {healthPercentage.ToString("F2")}%\t\tArmor: {currentArmor}\t\tLevel: 0\t\tXP: 0 / 0");
+            Console.WriteLine($"{fullName} of {homeName}\t\tHealth: {healthPercentage.ToString("F2")}%\t\tArmor: {currentArmor}\t\tLevel: {level}\t\tXP: {xp} / {nextLevelXP}");
             Console.WriteLine("--------------------------------------------------------------------------------");
         }
 
