@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using WarlordsOfDraemor.Items;
 
 namespace WarlordsOfDraemor
 {
@@ -17,8 +19,9 @@ namespace WarlordsOfDraemor
         private int dexterity;
         private int constitution;
         private int level;
-        private int xp;
+        private int currentXP;
         private int nextLevelXP;
+        private int currentGold;
         private int skillPoints;
 
         // HEALTH & ARMOR
@@ -26,6 +29,17 @@ namespace WarlordsOfDraemor
         private int currentHealth;
         private decimal healthPercentage;
         private int currentArmor;
+
+        // EQUIPMENT SLOTS
+        private Weapon weapon;
+        private Shield shield;
+        private Helmet helmet;
+        private ChestArmor chest;
+        private Gauntlets gauntlets;
+        private LegArmor legs;
+
+        // INVENTORY
+        private List<Item> inventory = new List<Item>();
 
         // HEALTH PERCENTAGE CALC
         public void calcHealthPercentage()
@@ -36,9 +50,9 @@ namespace WarlordsOfDraemor
         // GAIN XP
         public void GainXP(int xpGained)
         {
-            xp += xpGained;
+            currentXP += xpGained;
             Console.WriteLine($"You have gained {xpGained} XP.");
-            if (xp >= nextLevelXP)
+            if (currentXP >= nextLevelXP)
                 LevelUp();
         }
 
@@ -49,7 +63,7 @@ namespace WarlordsOfDraemor
             double temp = nextLevelXP;
             temp *= 1.5;
             nextLevelXP = (int)temp;
-            maxHealth += 10;
+            maxHealth += 5;
             Console.WriteLine($"LEVEL UP! You are now level {level}! You have gained a skill point and +10 max HP!");
         }
 
@@ -101,11 +115,11 @@ namespace WarlordsOfDraemor
             dexterity = 1;
             constitution = 1;
             level = 1;
-            xp = 0;
+            currentXP = 0;
             nextLevelXP = 100;
 
-            maxHealth = 91;
-            currentHealth = 42;
+            maxHealth = 100;
+            currentHealth = 100;
             calcHealthPercentage();
             currentArmor = 0;
 
@@ -148,7 +162,7 @@ namespace WarlordsOfDraemor
         public void DisplayHeaderBar()
         {
             Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.WriteLine($"{fullName} of {homeName}\t\tHealth: {healthPercentage.ToString("F2")}%\t\tArmor: {currentArmor}\t\tLevel: {level}\t\tXP: {xp} / {nextLevelXP}");
+            Console.WriteLine($"{fullName} of {homeName}\t\tHealth: {healthPercentage.ToString("F2")}%\t\tArmor: {currentArmor}\t\tLevel: {level}\t\tXP: {currentXP} / {nextLevelXP}");
             Console.WriteLine("--------------------------------------------------------------------------------");
         }
 
