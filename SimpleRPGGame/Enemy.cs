@@ -2,7 +2,7 @@
 
 namespace WarlordsOfDraemor
 {
-    public class Enemy
+    public class Enemy : Character
     {
 
         // GENERAL INFO

@@ -17,16 +17,21 @@ namespace WarlordsOfDraemor
         public static bool MainMenu()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("###################");
             Console.WriteLine("WARLORDS OF DRAEMOR");
-            Console.WriteLine("Welcome to Warlords of Draemor; A text-based fantasy RPG, developed by Ash Edwards");
+            Console.WriteLine("###################");
+            Console.ResetColor();
+            Console.WriteLine("Welcome to Warlords of Draemor; A text-based fantasy RPG.");
 
             Console.WriteLine();
-            Console.WriteLine("Main Menu:");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("MAIN MENU");
+            Console.ResetColor();
             Console.WriteLine();
 
             Console.WriteLine("1. New Game");
-            Console.WriteLine("2. About");
-            Console.WriteLine("3. Quit");
+            Console.WriteLine("2. Quit");
 
             Console.WriteLine();
             Console.Write("Please choose a number: ");
@@ -35,15 +40,13 @@ namespace WarlordsOfDraemor
             switch (mainMenuChoice)
             {
                 case "1":
-                    // StartGame();
-                    Console.Clear();
-                    Console.WriteLine("This is where a new game would start!");
-                    Console.ReadLine();
+                    bool play = true;
+                    while (play)
+                    {
+                        play = StartGame();
+                    }
                     break;
                 case "2":
-                    AboutPage();
-                    break;
-                case "3":
                     Console.Clear();
                     Console.WriteLine("The game will now exit. Thank you for playing.");
                     Console.ReadLine();

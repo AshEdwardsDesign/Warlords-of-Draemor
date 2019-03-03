@@ -1,7 +1,6 @@
 ﻿namespace WarlordsOfDraemor.Items
 {
-    class Shield : Item
+    public class Shield : Armor
     {
-        private int armorRating = 0;
     }
 }

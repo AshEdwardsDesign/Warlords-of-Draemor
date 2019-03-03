@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WarlordsOfDraemor.Items
+﻿namespace WarlordsOfDraemor.Items
 {
-    class Item
+    public class Item
     {
-        private string name = "";
-        private int weight = 0;
-        private int value = 0;
+        protected string name = "";
+        protected int weight = 0;
+        protected int value = 0;
     }
 }

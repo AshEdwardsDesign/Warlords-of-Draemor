@@ -1,7 +1,6 @@
 ﻿namespace WarlordsOfDraemor.Items
 {
-    class LegArmor : Item
+    public class LegArmor : Armor
     {
-        private int armorRating = 0;
     }
 }

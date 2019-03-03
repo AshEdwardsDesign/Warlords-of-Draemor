@@ -1,7 +1,6 @@
 ﻿namespace WarlordsOfDraemor.Items
 {
-    class Gauntlets : Item
+    public class Gauntlets : Armor
     {
-        private int armorRating = 0;
     }
 }
