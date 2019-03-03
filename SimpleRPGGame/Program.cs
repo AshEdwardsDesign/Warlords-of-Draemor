@@ -43,7 +43,7 @@ namespace WarlordsOfDraemor
                     bool play = true;
                     while (play)
                     {
-                        play = StartGame();
+                        play = Tavern.StartGame();
                     }
                     break;
                 case "2":

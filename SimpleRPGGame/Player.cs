@@ -11,6 +11,7 @@ namespace WarlordsOfDraemor
         private int nextLevelXP;
         private int currentGold;
         private int skillPoints;
+        private int charisma;
 
         // INVENTORY
         private List<Item> inventory = new List<Item>();
