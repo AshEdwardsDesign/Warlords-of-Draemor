@@ -7,6 +7,7 @@ namespace WarlordsOfDraemor
         // GENERAL INFO
         protected string name;
         protected string homeName;
+        protected CharacterClass characterClass;
 
         // STATS
         protected int strength;
@@ -40,5 +41,25 @@ namespace WarlordsOfDraemor
         {
             currentHealth -= dmgReceived;
         }
+
+    }
+
+    // Character class Enum
+    public enum CharacterClass
+    {
+        Knight,
+        Mage,
+        Thief,
+        Warlock
+    }
+
+    // Enemy class enum
+    public enum enemyClass
+    {
+        Orc,
+        Imp,
+        Bandit,
+        GiantSpider,
+        Draugr
     }
 }

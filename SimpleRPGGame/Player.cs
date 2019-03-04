@@ -113,6 +113,7 @@ namespace WarlordsOfDraemor
             Console.WriteLine();
             Console.WriteLine($"Character Name: {name}");
             Console.WriteLine($"Character hails from: {homeName}");
+            Console.WriteLine($"Character Class: {characterClass}");
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.Yellow;
