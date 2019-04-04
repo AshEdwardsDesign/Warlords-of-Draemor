@@ -78,10 +78,50 @@ namespace WarlordsOfDraemor
             Console.Write("What is the name of your characters hometown: ");
             homeName = Console.ReadLine();
 
-            strength = 1;
-            intelligence = 1;
-            dexterity = 1;
-            constitution = 1;
+            Console.Write("Which character class would you like to be? Knight, Mage, Thief or Warlock: ");
+            string classChoice = Console.ReadLine().ToLower();
+
+            switch (classChoice)
+            {
+                case "knight":
+                    strength = 3;
+                    intelligence = 1;
+                    dexterity = 1;
+                    constitution = 2;
+                    charisma = 1;
+                    Console.Write("You have chosen Knight!");
+                    break;
+                case "mage":
+                    strength = 1;
+                    intelligence = 3;
+                    dexterity = 2;
+                    constitution = 1;
+                    charisma = 1;
+                    Console.Write("You have chosen Mage!");
+                    break;
+                case "thief":
+                    strength = 1;
+                    intelligence = 2;
+                    dexterity = 3;
+                    constitution = 1;
+                    charisma = 1;
+                    Console.Write("You have chosen Thief!");
+                    break;
+                case "warlock":
+                    strength = 2;
+                    intelligence = 2;
+                    dexterity = 2;
+                    constitution = 2;
+                    charisma = 1;
+                    Console.Write("You have chosen Warlock!");
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Sorry, I don't recognise that class, please try again.");
+                    Console.ResetColor();
+                    break;
+            }
+            
             level = 1;
             currentXP = 0;
             nextLevelXP = 100;
@@ -124,6 +164,7 @@ namespace WarlordsOfDraemor
             Console.WriteLine($"Intelligence: {intelligence}");
             Console.WriteLine($"Dexterity: {dexterity}");
             Console.WriteLine($"Constitution: {constitution}");
+            Console.WriteLine($"Charisma: {charisma}");
             Console.WriteLine();
             Console.WriteLine($"Current Gold: {currentGold}");
             Console.WriteLine($"Current XP: {currentXP}");
@@ -146,9 +187,10 @@ namespace WarlordsOfDraemor
         // Display header bar
         public void DisplayHeaderBar()
         {
-            Console.WriteLine("--------------------------------------------------------------------------------");
             Console.WriteLine($"{name} of {homeName}\t\tHealth: {healthPercentage.ToString("F2")}%\t\tArmor: {currentArmor}\t\tLevel: {level}\t\tXP: {currentXP} / {nextLevelXP}");
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("------------------------------");
+            Console.WriteLine();
         }
 
 

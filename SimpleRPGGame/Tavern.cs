@@ -23,6 +23,7 @@ namespace WarlordsOfDraemor
         public static void PlayIntro(Player player)
         {
             Console.Clear();
+            player.DisplayHeaderBar();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("A JOURNEY BEGINS...");
             Console.ResetColor();
@@ -34,6 +35,7 @@ namespace WarlordsOfDraemor
         public static bool GoToTavern(Player player)
         {
             Console.Clear();
+            player.DisplayHeaderBar();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("##########################");
             Console.WriteLine("THE FOX & HOUND: GAME HUB");
@@ -62,22 +64,22 @@ namespace WarlordsOfDraemor
             switch (playerChoice)
             {
                 case 1:
-                    Exploration();
+                    Exploration(player);
                     break;
                 case 2:
-                    JobBoard();
+                    JobBoard(player);
                     break;
                 case 3:
-                    Gossip();
+                    Gossip(player);
                     break;
                 case 4:
-                    GeneralStore();
+                    GeneralStore(player);
                     break;
                 case 5:
-                    Weaponsmith();
+                    Weaponsmith(player);
                     break;
                 case 6:
-                    Blacksmith();
+                    Blacksmith(player);
                     break;
                 case 7:
                     Console.Clear();
@@ -91,44 +93,50 @@ namespace WarlordsOfDraemor
             return true;
         }
 
-        private static void Blacksmith()
+        private static void Blacksmith(Player player)
         {
             Console.Clear();
+            player.DisplayHeaderBar();
             Console.WriteLine("This is the blacksmith...");
             Console.ReadLine();
         }
 
-        private static void Weaponsmith()
+        private static void Weaponsmith(Player player)
         {
             Console.Clear();
+            player.DisplayHeaderBar();
             Console.WriteLine("This is the weaponsmith...");
             Console.ReadLine();
         }
 
-        private static void GeneralStore()
+        private static void GeneralStore(Player player)
         {
             Console.Clear();
+            player.DisplayHeaderBar();
             Console.WriteLine("This is the General store...");
             Console.ReadLine();
         }
 
-        private static void Gossip()
+        private static void Gossip(Player player)
         {
             Console.Clear();
+            player.DisplayHeaderBar();
             Console.WriteLine("This is where you will be able to gossip with the NPC's in the tavern...");
             Console.ReadLine();
         }
 
-        private static void JobBoard()
+        private static void JobBoard(Player player)
         {
             Console.Clear();
+            player.DisplayHeaderBar();
             Console.WriteLine("This is the job board, where you will discover quests and bounties...");
             Console.ReadLine();
         }
 
-        private static void Exploration()
+        private static void Exploration(Player player)
         {
             Console.Clear();
+            player.DisplayHeaderBar();
             Console.WriteLine("This is where you will explore Draemor freely...");
             Console.ReadLine();
         }
