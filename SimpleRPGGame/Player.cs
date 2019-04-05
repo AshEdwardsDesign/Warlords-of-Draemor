@@ -78,7 +78,15 @@ namespace WarlordsOfDraemor
             Console.Write("What is the name of your characters hometown: ");
             homeName = Console.ReadLine();
 
-            Console.Write("Which character class would you like to be? Knight, Mage, Thief or Warlock: ");
+            Console.Write("Which character class would you like to be? Knight, Mage, Thief or Warlock:\n " +
+                "\n" +
+                "Class\tStrength\tInteligence\tDexterity\tConstitution\tCharisma\n" +
+                "Knight\t3\t\t1\t\t1\t\t2\t\t1\n" +
+                "Mage\t1\t\t3\t\t2\t\t1\t\t1\n" +
+                "Thief\t1\t\t2\t\t3\t\t1\t\t1\n" +
+                "Warlock\t2\t\t2\t\t2\t\t2\t\t1\n\n" +
+                "Your choice: ");
+
             string classChoice = Console.ReadLine().ToLower();
 
             switch (classChoice)
@@ -89,6 +97,7 @@ namespace WarlordsOfDraemor
                     dexterity = 1;
                     constitution = 2;
                     charisma = 1;
+                    characterClass = CharacterClass.Knight;
                     Console.Write("You have chosen Knight!");
                     break;
                 case "mage":
@@ -97,6 +106,7 @@ namespace WarlordsOfDraemor
                     dexterity = 2;
                     constitution = 1;
                     charisma = 1;
+                    characterClass = CharacterClass.Mage;
                     Console.Write("You have chosen Mage!");
                     break;
                 case "thief":
@@ -105,6 +115,7 @@ namespace WarlordsOfDraemor
                     dexterity = 3;
                     constitution = 1;
                     charisma = 1;
+                    characterClass = CharacterClass.Thief;
                     Console.Write("You have chosen Thief!");
                     break;
                 case "warlock":
@@ -113,6 +124,7 @@ namespace WarlordsOfDraemor
                     dexterity = 2;
                     constitution = 2;
                     charisma = 1;
+                    characterClass = CharacterClass.Warlock;
                     Console.Write("You have chosen Warlock!");
                     break;
                 default:
