@@ -6,7 +6,8 @@ namespace WarlordsOfDraemor
     {
         public static void StartCombat(Player player, Enemy enemy)
         {
-            while (player.GetHealth() > 0 && enemy.GetHealth() > 0)
+
+            while (true)
             {
                 player.DealDamage(enemy);
                 Console.WriteLine($"Player hits. Enemy Health = {enemy.GetHealth()}");

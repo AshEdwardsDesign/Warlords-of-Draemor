@@ -19,7 +19,6 @@ namespace WarlordsOfDraemor
         public static void PlayIntro(Player player)
         {
             Console.Clear();
-            player.DisplayHeaderBar();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("A JOURNEY BEGINS...");
             Console.ResetColor();

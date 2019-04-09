@@ -6,39 +6,10 @@
         // GENERAL INFO
         private string enemyType;
 
-        // STATS
-        private int strength;
-        private int intelligence;
-        private int dexterity;
-        private int constitution;
-        private int level;
-
-        // HEALTH & ARMOR
-        private int maxHealth;
-        private int currentHealth;
-        private decimal healthPercentage;
-        private int currentArmor;
-
         // HEALTH PERCENTAGE CALC
         public void calcHealthPercentage()
         {
             healthPercentage = ((decimal)currentHealth / (decimal)maxHealth) * 100M;
-        }
-
-        // DEAL DAMAGE
-        public void DealDamage(Character enemy)
-        {
-            enemy.TakeDamage(5);
-        }
-
-        // TAKE DAMAGE
-        public void TakeDamage(int dmgReceived, Player enemy)
-        {
-            currentHealth -= dmgReceived;
-            if (currentHealth <= 0)
-            {
-                Death(enemy);
-            }
         }
 
         public int calcXPValue()
