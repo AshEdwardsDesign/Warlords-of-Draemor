@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WarlordsOfDraemor
+﻿namespace WarlordsOfDraemor
 {
     public class Enemy : Character
     {
@@ -28,17 +26,19 @@ namespace WarlordsOfDraemor
         }
 
         // DEAL DAMAGE
-        public void DealDamage(Player player)
+        public void DealDamage(Character enemy)
         {
-            player.TakeDamage(5);
+            enemy.TakeDamage(5);
         }
 
         // TAKE DAMAGE
-        public void TakeDamage(int dmgReceived, Player player)
+        public void TakeDamage(int dmgReceived, Player enemy)
         {
             currentHealth -= dmgReceived;
             if (currentHealth <= 0)
-                Death(player);
+            {
+                Death(enemy);
+            }
         }
 
         public int calcXPValue()
@@ -47,16 +47,22 @@ namespace WarlordsOfDraemor
         }
 
         // DEATH 
-        public void Death(Player player)
+        public void Death(Player enemy)
         {
-            player.GainXP(calcXPValue());
+            enemy.GainXP(calcXPValue());
         }
 
         // ENEMY CREATION (CONSTRUCTOR)
         public Enemy(Player player)
         {
-            // TO-DO
+            enemyType = "Orc";
+            strength = 1;
+            intelligence = 1;
+            dexterity = 1;
+            constitution = 1;
+            currentHealth = 100;
+            maxHealth = 100;
         }
-        
+
     }
 }

@@ -42,6 +42,12 @@ namespace WarlordsOfDraemor
             currentHealth -= dmgReceived;
         }
 
+        // GET HEALTH METHOD
+        public int GetHealth()
+        {
+            return currentHealth;
+        }
+
     }
 
     // Character class Enum

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WarlordsOfDraemor
 {
@@ -29,9 +25,18 @@ namespace WarlordsOfDraemor
             Console.ResetColor();
             Console.WriteLine("This is the intro, which will have you fight an enemy and overcome a puzzle before reaching the Fox & Hound.");
             Console.WriteLine("To be implemented.");
+            Console.WriteLine("Combat test will start...");
+            Console.ReadLine();
+            Enemy enemy = new Enemy(player);
+            Combat.StartCombat(player, enemy);
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Sends the player to the Tavern, the main hub of the game.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns>Bool</returns>
         public static bool GoToTavern(Player player)
         {
             Console.Clear();
