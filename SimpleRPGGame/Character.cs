@@ -58,14 +58,4 @@ namespace WarlordsOfDraemor
         Thief,
         Warlock
     }
-
-    // Enemy class enum
-    public enum enemyClass
-    {
-        Orc,
-        Imp,
-        Bandit,
-        GiantSpider,
-        Draugr
-    }
 }

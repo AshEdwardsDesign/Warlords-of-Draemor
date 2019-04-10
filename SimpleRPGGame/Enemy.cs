@@ -1,10 +1,12 @@
-﻿namespace WarlordsOfDraemor
+﻿using System;
+
+namespace WarlordsOfDraemor
 {
     public class Enemy : Character
     {
 
         // GENERAL INFO
-        private string enemyType;
+        private enemyClass EnemyClass;
 
         // HEALTH PERCENTAGE CALC
         public void calcHealthPercentage()
@@ -26,13 +28,38 @@
         // ENEMY CREATION (CONSTRUCTOR)
         public Enemy(Player player)
         {
-            enemyType = "Orc";
+            EnemyClass = ChooseRandomEnemyClass();
             strength = 1;
             intelligence = 1;
             dexterity = 1;
             constitution = 1;
-            currentHealth = 100;
-            maxHealth = 100;
+            currentHealth = 50;
+            maxHealth = currentHealth;
+        }
+
+        // CHOOSE RANDOM ENEMY CLASS
+        private enemyClass ChooseRandomEnemyClass()
+        {
+            Random myRand = new Random();
+            var enemyClasses = Enum.GetValues(typeof(enemyClass));
+            enemyClass chosen = (enemyClass)enemyClasses.GetValue(myRand.Next(enemyClasses.Length));
+            return chosen;
+        }
+
+        // Enemy class enum
+        public enum enemyClass
+        {
+            Orc,
+            Imp,
+            Bandit,
+            GiantSpider,
+            Draugr
+        }
+
+        // Get enemy's current class
+        public string GetEnemyClass()
+        {
+            return EnemyClass.ToString();
         }
 
     }

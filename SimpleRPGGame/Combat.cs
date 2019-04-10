@@ -4,8 +4,10 @@ namespace WarlordsOfDraemor
 {
     public static class Combat
     {
-        public static void StartCombat(Player player, Enemy enemy)
+        public static void StartCombat(Player player)
         {
+
+            Enemy enemy = new Enemy(player); 
 
             while (true)
             {
@@ -32,6 +34,17 @@ namespace WarlordsOfDraemor
                     return;
                 }
             }
+        }
+
+        private static void DisplayCombatScreen(Player player, Enemy enemy)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("###########");
+            Console.WriteLine("COMBAT MODE");
+            Console.WriteLine("###########");
+            Console.ResetColor();
+
+            Console.WriteLine($"Player Name: {player.Name}\t\t\tEnemy Class: {enemy.enemyClass}");
         }
 
     }
