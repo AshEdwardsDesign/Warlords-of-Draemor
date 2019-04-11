@@ -24,6 +24,9 @@ namespace WarlordsOfDraemor
             Console.ResetColor();
             Console.WriteLine("This is the intro, which will have you fight an enemy and overcome a puzzle before reaching the Fox & Hound.");
             Console.WriteLine("To be implemented.");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("A combat trial will now begin...");
+            Console.ResetColor();
             Console.ReadLine();
             Combat.StartCombat(player);
         }

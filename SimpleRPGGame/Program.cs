@@ -48,7 +48,10 @@ namespace WarlordsOfDraemor
                     break;
                 case "2":
                     Console.Clear();
-                    Console.WriteLine("The game will now exit. Thank you for playing.");
+                    Console.WriteLine("THANK YOU FOR PLAYING! :)");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Please press enter to exit the application.");
+                    Console.ResetColor();
                     Console.ReadLine();
                     return false;
                 default:

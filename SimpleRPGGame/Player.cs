@@ -69,23 +69,25 @@ namespace WarlordsOfDraemor
             Console.WriteLine();
             Console.WriteLine("Before your adventure throughout Draemor begins, you will create your character.");
             Console.WriteLine("The following wizard will ask you some simple details, after which you will be shown your character sheet and your adventure can begin!");
-            Console.WriteLine();
-            
+            Console.ReadLine();
+
+            Console.Clear();
             Console.Write("What is your characters name: ");
             name = Console.ReadLine();
-            
 
+            Console.Clear();
             Console.Write("What is the name of your characters hometown: ");
             homeName = Console.ReadLine();
 
+            Console.Clear();
             Console.Write("Which character class would you like to be? Knight, Mage, Thief or Warlock:\n " +
                 "\n" +
-                "Class\tStrength\tInteligence\tDexterity\tConstitution\tCharisma\n" +
-                "Knight\t3\t\t1\t\t1\t\t2\t\t1\n" +
-                "Mage\t1\t\t3\t\t2\t\t1\t\t1\n" +
-                "Thief\t1\t\t2\t\t3\t\t1\t\t1\n" +
-                "Warlock\t2\t\t2\t\t2\t\t2\t\t1\n\n" +
-                "Your choice: ");
+                "Class\t\tStrength\tInteligence\tDexterity\tConstitution\tCharisma\n" +
+                "Knight\t\t3\t\t1\t\t1\t\t2\t\t1\n" +
+                "Mage\t\t1\t\t3\t\t2\t\t1\t\t1\n" +
+                "Thief\t\t1\t\t2\t\t3\t\t1\t\t1\n" +
+                "Warlock\t\t2\t\t2\t\t2\t\t2\t\t1\n\n" +
+                "Your choice (or type random): ");
 
             string classChoice = Console.ReadLine().ToLower();
 
@@ -98,7 +100,9 @@ namespace WarlordsOfDraemor
                     constitution = 2;
                     charisma = 1;
                     characterClass = CharacterClass.Knight;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("You have chosen Knight!");
+                    Console.ResetColor();
                     break;
                 case "mage":
                     strength = 1;
@@ -107,7 +111,9 @@ namespace WarlordsOfDraemor
                     constitution = 1;
                     charisma = 1;
                     characterClass = CharacterClass.Mage;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("You have chosen Mage!");
+                    Console.ResetColor();
                     break;
                 case "thief":
                     strength = 1;
@@ -116,7 +122,9 @@ namespace WarlordsOfDraemor
                     constitution = 1;
                     charisma = 1;
                     characterClass = CharacterClass.Thief;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("You have chosen Thief!");
+                    Console.ResetColor();
                     break;
                 case "warlock":
                     strength = 2;
@@ -125,7 +133,9 @@ namespace WarlordsOfDraemor
                     constitution = 2;
                     charisma = 1;
                     characterClass = CharacterClass.Warlock;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("You have chosen Warlock!");
+                    Console.ResetColor();
                     break;
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -203,6 +213,15 @@ namespace WarlordsOfDraemor
             Console.WriteLine();
             Console.WriteLine("------------------------------");
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Get the name of the player.
+        /// </summary>
+        /// <returns></returns>
+        public string GetName()
+        {
+            return name;
         }
 
 

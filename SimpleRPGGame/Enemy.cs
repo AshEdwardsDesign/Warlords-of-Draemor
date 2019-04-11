@@ -53,10 +53,15 @@ namespace WarlordsOfDraemor
             Imp,
             Bandit,
             GiantSpider,
-            Draugr
+            Draugr,
+            Dhampyr,
+            Vampire
         }
 
-        // Get enemy's current class
+        /// <summary>
+        /// Get the Enemy's class.
+        /// </summary>
+        /// <returns></returns>
         public string GetEnemyClass()
         {
             return EnemyClass.ToString();
