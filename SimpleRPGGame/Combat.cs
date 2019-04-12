@@ -9,30 +9,40 @@ namespace WarlordsOfDraemor
 
             Enemy enemy = new Enemy(player); 
 
-            while (true)
+            while (player.isAlive && enemy.isAlive)
             {
-                DisplayCombatScreen(player, enemy);
                 player.DealDamage(enemy);
+                DisplayCombatScreen(player, enemy);
                 Console.WriteLine($"Player hits. Enemy Health = {enemy.GetHealth()}");
                 Console.ReadLine();
 
                 if (player.GetHealth() <= 0)
                 {
+                    player.isAlive = false;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("You have died!");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Press enter to return the the main menu.");
+                    Console.ResetColor();
                     Console.ReadLine();
                     Program.MainMenu();
                 }
 
                 if (enemy.GetHealth() <= 0)
                 {
+                    enemy.isAlive = false;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You have killed the enemy!");
+                    Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Press enter to loot the corpse.");
+                    Console.ResetColor();
                     Console.ReadLine();
                     return;
                 }
-
-                DisplayCombatScreen(player, enemy);
+                
                 enemy.DealDamage(player);
+                DisplayCombatScreen(player, enemy);
                 Console.WriteLine($"Enemy hits. Player health = {player.GetHealth()}");
                 Console.ReadLine();
 

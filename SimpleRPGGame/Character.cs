@@ -8,6 +8,18 @@ namespace WarlordsOfDraemor
         protected string name;
         protected string homeName;
         protected CharacterClass characterClass;
+        protected bool alive = true;
+        public bool isAlive
+        {
+            get
+            {
+                return alive;
+            }
+            set
+            {
+                alive = value;
+            }
+        }
 
         // STATS
         protected int strength;
