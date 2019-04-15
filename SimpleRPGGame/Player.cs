@@ -39,6 +39,42 @@ namespace WarlordsOfDraemor
                 LevelUp();
         }
 
+        /// <summary>
+        /// Give n amount of gold to the player's purse.
+        /// </summary>
+        public void GainGold(int amount)
+        {
+            currentGold += amount;
+            Console.WriteLine($"You have gained {amount} gold. Your purse now contains {currentGold}.");
+        }
+
+        /// <summary>
+        /// Deducts n amount of gold from the player's purse.
+        /// </summary>
+        public void SpendGold(int amount)
+        {
+            currentGold -= amount;
+            Console.WriteLine($"You have spent {amount} gold. Your purse now contains {currentGold}.");
+        }
+
+        /// <summary>
+        /// Returns the players current gold amount.
+        /// </summary>
+        public int GetGoldAmount()
+        {
+            return currentGold;
+        }
+
+        /// <summary>
+        /// Returns the player's current amount of XP.
+        /// </summary>
+        /// <returns></returns>
+        public int GetXPAmount()
+        {
+            return currentXP;
+        }
+
+
         // LEVEL UP 
         public void LevelUp()
         {

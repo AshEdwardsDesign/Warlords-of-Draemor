@@ -38,6 +38,7 @@ namespace WarlordsOfDraemor
                     Console.WriteLine("Press enter to loot the corpse.");
                     Console.ResetColor();
                     Console.ReadLine();
+                    DisplayLootScreen(player, enemy);
                     return;
                 }
                 
@@ -61,8 +62,29 @@ namespace WarlordsOfDraemor
             Console.WriteLine($"Player Name: {player.GetName()}\t\t\tEnemy Class: {enemy.GetEnemyClass()}");
             Console.WriteLine($"Player Health: {player.GetHealth()}\t\t\tEnemy Health: {enemy.GetHealth()}");
             Console.WriteLine();
-
         }
+
+        /// <summary>
+        /// Display the loot screen (showing loot, xp, gold gained etc).
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="enemy"></param>
+        private static void DisplayLootScreen(Player player, Enemy enemy)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("############");
+            Console.WriteLine("LOOT SCREEN");
+            Console.WriteLine("############");
+            Console.ResetColor();
+
+            Console.WriteLine($"Player Name: {player.GetName()}\t\t\tEnemy Class: {enemy.GetEnemyClass()}");
+            Console.WriteLine($"Player current health: {player.GetHealth()}");
+            Console.WriteLine($"Gold: {player.GetGoldAmount()}\t\t\tPlayer xp: {player.GetXPAmount()}");
+            Console.WriteLine();
+            enemy.Death(player);
+            Console.ReadLine();
+        } 
 
     }
 }

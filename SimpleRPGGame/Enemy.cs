@@ -19,10 +19,16 @@ namespace WarlordsOfDraemor
             return 25;
         }
 
+        public int calcGoldValue()
+        {
+            return 10;
+        }
+
         // DEATH 
         public void Death(Player enemy)
         {
             enemy.GainXP(calcXPValue());
+            enemy.GainGold(calcGoldValue());
         }
 
         // ENEMY CREATION (CONSTRUCTOR)
