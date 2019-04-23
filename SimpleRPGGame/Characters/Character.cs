@@ -42,6 +42,10 @@ namespace WarlordsOfDraemor
         protected Gauntlets gauntlets;
         protected LegArmor legs;
 
+        // LOOT PROPERTIES
+        protected int lootDropChance = 0;
+        protected int lootDropMaxRarity = 0;
+
         // DEAL DAMAGE METHOD
         public void DealDamage(Character enemy)
         {
