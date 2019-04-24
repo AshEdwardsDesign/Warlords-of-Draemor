@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WarlordsOfDraemor.Items
+﻿namespace WarlordsOfDraemor
 {
-    class Potions : Item
+    class Potion : Item
     {
+        public Potion(string itemName, int itemWeight, int itemValue, int itemRarity) : base(itemName,itemWeight, itemValue, itemRarity)
+        {
+
+        }
     }
 }

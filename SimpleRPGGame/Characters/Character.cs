@@ -1,6 +1,4 @@
-﻿using WarlordsOfDraemor.Items;
-
-namespace WarlordsOfDraemor
+﻿namespace WarlordsOfDraemor
 {
     public class Character
     {
@@ -39,7 +37,7 @@ namespace WarlordsOfDraemor
         protected Shield shield;
         protected Helmet helmet;
         protected ChestArmor chest;
-        protected Gauntlets gauntlets;
+        protected Gauntlet gauntlets;
         protected LegArmor legs;
 
         // LOOT PROPERTIES

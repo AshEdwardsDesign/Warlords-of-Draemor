@@ -2,33 +2,27 @@
 
 namespace WarlordsOfDraemor
 {
-    public static class Tavern
+    public class Hub
     {
-        public static bool StartGame()
-        {
-            Player player = new Player();
-            PlayIntro(player);
-            bool cont = true;
-            while (cont)
-            {
-                cont = GoToTavern(player);
-            }
-            return false;
-        }
+        private string hubName;
+        public string hubLocation;
+        private HubType hubType;
+        private bool hasBlacksmith;
+        private bool hasGeneralStore;
+        private bool hasWeaponsmith;
+        private bool hasHouseForSale;
+        private bool hasStoreForSale;
 
-        public static void PlayIntro(Player player)
+        public Hub(string name, string location, HubType type, bool blacksmith, bool generalStore, bool weaponsmith, bool canBuyHouse, bool canBuyShop)
         {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("A JOURNEY BEGINS...");
-            Console.ResetColor();
-            Console.WriteLine("This is the intro, which will have you fight an enemy and overcome a puzzle before reaching the Fox & Hound.");
-            Console.WriteLine("To be implemented.");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("A combat trial will now begin...");
-            Console.ResetColor();
-            Console.ReadLine();
-            Combat.StartCombat(player);
+            hubName = name;
+            hubLocation = location;
+            hubType = type;
+            hasBlacksmith = blacksmith;
+            hasGeneralStore = generalStore;
+            hasWeaponsmith = weaponsmith;
+            hasHouseForSale = canBuyHouse;
+            hasStoreForSale = canBuyShop;
         }
 
         /// <summary>
@@ -36,56 +30,60 @@ namespace WarlordsOfDraemor
         /// </summary>
         /// <param name="player"></param>
         /// <returns>Bool</returns>
-        public static bool GoToTavern(Player player)
+        public bool GoToHub(Player player)
         {
             Console.Clear();
             player.DisplayHeaderBar();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("##########################");
-            Console.WriteLine("THE FOX & HOUND: GAME HUB");
+            Console.WriteLine($"The {hubType} of {hubName}");
             Console.WriteLine("##########################");
             Console.ResetColor();
-            Console.WriteLine("Welcome to the Fox & hound, a bustling inn which serves as the hub of all adventures throughout Draemor.");
+            Console.WriteLine($"Welcome to the {hubType} of {hubName}, a {hubType} in Draemoor's {hubLocation}.");
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Hub Menu");
+            Console.WriteLine($"{hubType} Menu");
             Console.ResetColor();
             Console.WriteLine();
 
-            Console.WriteLine("1. Explore Draemor");
-            Console.WriteLine("2. Look at the job board");
-            Console.WriteLine("3. Gossip");
-            Console.WriteLine("4. Visit the General Store");
-            Console.WriteLine("5. Visit the Weaponsmith");
-            Console.WriteLine("6. Visit the Blacksmith");
-            Console.WriteLine("7. Retire from adventuring");
+            Console.WriteLine("Explore Draemor");
+            Console.WriteLine("Visit the Tavern");
+            if (hasGeneralStore) Console.WriteLine("Visit the General Store");
+            if (hasWeaponsmith) Console.WriteLine("Visit the Weaponsmith");
+            if (hasBlacksmith) Console.WriteLine("Visit the Blacksmith");
+            if (hasHouseForSale) Console.WriteLine("Buy a House");
+            if (hasStoreForSale) Console.WriteLine("Buy a Shop");
+            Console.WriteLine("Retire from adventuring");
             Console.WriteLine();
 
             Console.Write("Please choose an option: ");
-            int playerChoice = int.Parse(Console.ReadLine());
+            string playerChoice = Console.ReadLine().ToLower();
 
             switch (playerChoice)
             {
-                case 1:
+                case "explore":
                     Exploration(player);
                     break;
-                case 2:
+                case "tavern":
                     JobBoard(player);
                     break;
-                case 3:
+                case "store":
                     Gossip(player);
                     break;
-                case 4:
+                case "weaponsmith":
                     GeneralStore(player);
                     break;
-                case 5:
+                case "blacksmith":
                     Weaponsmith(player);
                     break;
-                case 6:
-                    Blacksmith(player);
+                case "buy a house":
+                    BuyHouse(player);
                     break;
-                case 7:
+                case "buy a shop":
+                    SetUpShop(player);
+                    break;
+                case "retire":
                     Console.Clear();
                     Console.WriteLine("Are you sure you want to quit? [Y/N]");
                     return false;
@@ -143,6 +141,30 @@ namespace WarlordsOfDraemor
             player.DisplayHeaderBar();
             Console.WriteLine("This is where you will explore Draemor freely...");
             Console.ReadLine();
+        }
+
+        private static void BuyHouse(Player player)
+        {
+            Console.Clear();
+            player.DisplayHeaderBar();
+            Console.WriteLine("This is where you will be able to buy a house...");
+            Console.ReadLine();
+        }
+
+        private static void SetUpShop(Player player)
+        {
+            Console.Clear();
+            player.DisplayHeaderBar();
+            Console.WriteLine("This is where you will be able to set up a shop in town to generate passive income...");
+            Console.ReadLine();
+        }
+
+        public enum HubType
+        {
+            Inn,
+            Village,
+            Town,
+            City
         }
     }
 }

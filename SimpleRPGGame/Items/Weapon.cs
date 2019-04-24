@@ -1,4 +1,4 @@
-﻿namespace WarlordsOfDraemor.Items
+﻿namespace WarlordsOfDraemor
 {
     public class Weapon : Item
     {
@@ -12,7 +12,7 @@
         /// <param name="itemRarity"></param>
         /// <param name="itemValue"></param>
         /// <param name="itemWeight"></param>
-        public Weapon(string itemName, int itemDamage, int itemRarity, int itemValue, int itemWeight)
+        public Weapon(string itemName, int itemDamage, int itemRarity, int itemValue, int itemWeight) : base(itemName,itemWeight,itemValue,itemRarity)
         {
             name = itemName;
             damage = itemDamage;

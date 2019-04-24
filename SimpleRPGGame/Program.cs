@@ -6,12 +6,13 @@ namespace WarlordsOfDraemor
     {
         static void Main(string[] args)
         {
-            
+
             bool replay = true;
 
             while (replay)
-                replay = MainMenu(); 
-
+            {
+                replay = MainMenu();
+            }
         }
 
         public static bool MainMenu()
@@ -32,8 +33,8 @@ namespace WarlordsOfDraemor
 
             Console.WriteLine("1. New Game");
             Console.WriteLine("2. Quit");
-
             Console.WriteLine();
+
             Console.Write("Please choose a number: ");
             string mainMenuChoice = Console.ReadLine();
 
@@ -43,7 +44,7 @@ namespace WarlordsOfDraemor
                     bool play = true;
                     while (play)
                     {
-                        play = Tavern.StartGame();
+                        play = NewGameStart.StartGame();
                     }
                     break;
                 case "2":
@@ -58,7 +59,7 @@ namespace WarlordsOfDraemor
                     Console.WriteLine("Sorry, I didn't recognise that option!");
                     break;
             }
-            
+
             return true;
         }
     }
