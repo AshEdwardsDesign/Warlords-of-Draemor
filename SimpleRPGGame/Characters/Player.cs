@@ -12,6 +12,19 @@ namespace WarlordsOfDraemor
         private int skillPoints;
         private int charisma;
 
+        // LOCATIONS
+        private Location currentLocation;
+
+        public void SetLocation(Location loc)
+        {
+            currentLocation = loc;
+        }
+
+        public Location GetLocation()
+        {
+            return currentLocation;
+        }
+
         // INVENTORY
         private List<Item> inventory = new List<Item>();
 

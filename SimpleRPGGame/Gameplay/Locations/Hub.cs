@@ -2,27 +2,23 @@
 
 namespace WarlordsOfDraemor
 {
-    public class Hub
+    public class Hub : Location
     {
-        private string hubName;
-        public string hubLocation;
-        private HubType hubType;
-        private bool hasBlacksmith;
-        private bool hasGeneralStore;
-        private bool hasWeaponsmith;
-        private bool hasHouseForSale;
-        private bool hasStoreForSale;
+        private Blacksmith blacksmith;
+        private GeneralStore generalStore;
+        private Weaponsmith weaponsmith;
+        private EmptyHouse playerHouse;
+        private EmptyStore playerStore;
 
-        public Hub(string name, string location, HubType type, bool blacksmith, bool generalStore, bool weaponsmith, bool canBuyHouse, bool canBuyShop)
+        public Hub(string locName, string locDescription, Blacksmith smith = null, GeneralStore genStore = null, Weaponsmith weapon = null, EmptyHouse house = null, EmptyStore store = null) : base(locName, locDescription)
         {
-            hubName = name;
-            hubLocation = location;
-            hubType = type;
-            hasBlacksmith = blacksmith;
-            hasGeneralStore = generalStore;
-            hasWeaponsmith = weaponsmith;
-            hasHouseForSale = canBuyHouse;
-            hasStoreForSale = canBuyShop;
+            locationName = locName;
+            locationDescription = locDescription;
+            blacksmith = smith;
+            generalStore = genStore;
+            weaponsmith = weapon;
+            playerHouse = house;
+            playerStore = store;
         }
 
         /// <summary>
@@ -36,14 +32,14 @@ namespace WarlordsOfDraemor
             player.DisplayHeaderBar();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("##########################");
-            Console.WriteLine($"The {hubType} of {hubName}");
+            Console.WriteLine($"The {GetType().ToString()} of {locationName}");
             Console.WriteLine("##########################");
             Console.ResetColor();
-            Console.WriteLine($"Welcome to the {hubType} of {hubName}, a {hubType} in Draemoor's {hubLocation}.");
+            Console.WriteLine($"Welcome to the {GetType().ToString()} of {locationName}. {locationDescription}");
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"{hubType} Menu");
+            Console.WriteLine($"{GetType().ToString()} Menu");
             Console.ResetColor();
             Console.WriteLine();
 
@@ -157,14 +153,6 @@ namespace WarlordsOfDraemor
             player.DisplayHeaderBar();
             Console.WriteLine("This is where you will be able to set up a shop in town to generate passive income...");
             Console.ReadLine();
-        }
-
-        public enum HubType
-        {
-            Inn,
-            Village,
-            Town,
-            City
         }
     }
 }

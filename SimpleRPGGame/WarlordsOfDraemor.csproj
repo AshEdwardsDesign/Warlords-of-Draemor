@@ -44,6 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\NPC.cs" />
+    <Compile Include="Gameplay\Locations\HubLocations\Weaponsmith.cs" />
+    <Compile Include="Gameplay\Locations\HubLocations\Blacksmith.cs" />
+    <Compile Include="Gameplay\Locations\HubLocations\EmptyHouse.cs" />
+    <Compile Include="Gameplay\Locations\HubLocations\EmptyStore.cs" />
+    <Compile Include="Gameplay\Locations\HubLocations\GeneralStore.cs" />
+    <Compile Include="Gameplay\Locations\HubLocations\Tavern.cs" />
+    <Compile Include="Gameplay\Locations\LocationTypes\Castle.cs" />
+    <Compile Include="Gameplay\Locations\LocationTypes\Cave.cs" />
+    <Compile Include="Gameplay\Locations\LocationTypes\City.cs" />
+    <Compile Include="Gameplay\Locations\LocationTypes\Dungeon.cs" />
+    <Compile Include="Gameplay\Locations\LocationTypes\Forest.cs" />
+    <Compile Include="Gameplay\Locations\LocationTypes\Inn.cs" />
+    <Compile Include="Gameplay\Locations\LocationTypes\Town.cs" />
+    <Compile Include="Gameplay\Locations\Store.cs" />
+    <Compile Include="Gameplay\Locations\TravelMenu.cs" />
     <Compile Include="Gameplay\NewGameStart.cs" />
     <Compile Include="Items\Book.cs" />
     <Compile Include="Characters\Character.cs" />
@@ -63,9 +79,12 @@
     <Compile Include="Items\Shield.cs" />
     <Compile Include="Items\Weapon.cs" />
     <Compile Include="Characters\Player.cs" />
+    <Compile Include="Gameplay\Locations\Location.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Gameplay\Hub.cs" />
+    <Compile Include="Gameplay\Locations\Hub.cs" />
+    <Compile Include="Gameplay\Locations\WorldLocations.cs" />
+    <Compile Include="Gameplay\Locations\LocationTypes\Village.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

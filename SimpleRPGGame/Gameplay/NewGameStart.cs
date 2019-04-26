@@ -7,7 +7,6 @@ namespace WarlordsOfDraemor
         public static bool StartGame()
         {
             Player player = new Player();
-            Hub foxAndHound = new Hub("Fox & Hound", "on the outskirts of the Arwaen forest", Hub.HubType.Inn, false, false, false, false, false);
             PlayIntro(player);
             bool cont = true;
             while (cont)
