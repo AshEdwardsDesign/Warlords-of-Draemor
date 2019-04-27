@@ -8,5 +8,9 @@ namespace WarlordsOfDraemor
 {
     public class GeneralStore : Store
     {
+        public GeneralStore(string name, string description, NPC owner) : base(name, description, owner)
+        {
+
+        }
     }
 }

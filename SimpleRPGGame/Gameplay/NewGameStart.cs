@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace WarlordsOfDraemor
 {
@@ -8,10 +9,12 @@ namespace WarlordsOfDraemor
         {
             Player player = new Player();
             PlayIntro(player);
+            Location foxHound = WorldLocations.GetAllLocations().Find(v => v.GetName() == "Fox & Hound");
+            player.SetLocation(foxHound);
             bool cont = true;
             while (cont)
             {
-                cont = foxAndHound.GoToHub(player);
+                cont = player.GetLocation().ShowLocationMenu(player);
             }
             return false;
         }

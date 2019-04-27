@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WarlordsOfDraemor
+﻿namespace WarlordsOfDraemor
 {
     public class Blacksmith : Store
     {
+        public Blacksmith(string name, string description, NPC owner) : base(name, description, owner)
+        {
+
+        }
     }
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WarlordsOfDraemor
+﻿namespace WarlordsOfDraemor
 {
     public class EmptyStore : Store
     {
+        public EmptyStore(string name, string description, NPC owner = null) : base(name, description, owner)
+        {
+
+        }
     }
 }

@@ -15,11 +15,19 @@ namespace WarlordsOfDraemor
         // LOCATIONS
         private Location currentLocation;
 
+        /// <summary>
+        /// Set's the players current location.
+        /// </summary>
+        /// <param name="loc">The location the player is travelling to.</param>
         public void SetLocation(Location loc)
         {
             currentLocation = loc;
         }
 
+        /// <summary>
+        /// Returns the players current location.
+        /// </summary>
+        /// <returns></returns>
         public Location GetLocation()
         {
             return currentLocation;
@@ -254,15 +262,6 @@ namespace WarlordsOfDraemor
             Console.ReadLine();
         }
 
-        // Display header bar
-        public void DisplayHeaderBar()
-        {
-            Console.WriteLine($"{name} of {homeName}\t\tHealth: {healthPercentage.ToString("F2")}%\t\tArmor: {currentArmor}\t\tLevel: {level}\t\tXP: {currentXP} / {nextLevelXP}");
-            Console.WriteLine();
-            Console.WriteLine("------------------------------");
-            Console.WriteLine();
-        }
-
         /// <summary>
         /// Get the name of the player.
         /// </summary>
@@ -272,6 +271,13 @@ namespace WarlordsOfDraemor
             return name;
         }
 
+        public bool DisplayPlayerMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("This is the player menu.");
+            Console.ReadLine();
+            return false;
+        }
 
     }
 }

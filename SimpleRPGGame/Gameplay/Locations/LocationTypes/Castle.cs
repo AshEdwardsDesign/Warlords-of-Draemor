@@ -2,8 +2,8 @@
 {
     public class Castle : Hub
     {
-        public Castle(string locName, string locDescription, Blacksmith blacksmith, GeneralStore genStore, Weaponsmith weapon, EmptyHouse emptyHouse, EmptyStore emptyStore)
-    : base(locName, locDescription, blacksmith, genStore, weapon, emptyHouse, emptyStore)
+        public Castle(string locName, string locDescription, Tavern tavern, Blacksmith blacksmith, GeneralStore genStore, Weaponsmith weaponsmith, EmptyHouse emptyHouse, EmptyStore emptyStore)
+    : base(locName, locDescription, tavern, blacksmith, genStore, weaponsmith, emptyHouse, emptyStore)
         {
         }
     }

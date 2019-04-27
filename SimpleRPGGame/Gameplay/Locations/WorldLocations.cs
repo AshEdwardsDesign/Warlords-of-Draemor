@@ -8,22 +8,25 @@ namespace WarlordsOfDraemor
         private static List<Location> allWorldLocations = new List<Location>()
         {
             // Inns
-            new Inn("Fox & Hound", "A dank and dark inn on the outskirts of the Arwaen forest", false, false, false, false, false),
+            new Inn("Fox & Hound", "A small waystation on a less-traveled trade route. Home to the Fox & Hound Inn", 
+                new Tavern("The Fox & Hound Inn", "A dank and dark inn on the outskirts of the Arwaen forest", 
+                    new NPC("Moorven Dynet", "The friendly and helpful owner of the Fox & Hound. Always willing to help out new adventurers begin their journey", 0)),
+                null, null, null, null, null),
             
             // Villages
-            new Village("Caeldor", "A peaceful village near the Fox & Hound.", true, true, false, false, false),
+            new Village("Caeldor", "A peaceful village near the Fox & Hound.", null, null, null, null, null, null),
 
             // Towns
-            new Town("Yorktown", "A bustling town and minor port on the banks of the Vildur river.", true, true, true, false, false),
+            new Town("Yorktown", "A bustling town and minor port on the banks of the Vildur river.", null, null, null, null, null, null),
 
             // Castles
-            new Castle("Castle Wyvet", "A castle held by xxx, located near Yorktown", true, false, true, false, false),
+            new Castle("Castle Wyvet", "A castle held by xxx, located near Yorktown", null, null, null, null, null, null),
 
             // Caves
             new Cave("Dawn Hollow", "A cave home to a local legend. Locals say a vampire dwells here."),
 
             // Cities
-            new City("Treyport", "A sprawling metropolis and power base for Lord Hassan.", true, true, true, true, true),
+            new City("Treyport", "A sprawling metropolis and power base for Lord Hassan.", null, null, null, null, null, null),
 
             // Dungeons
             new Dungeon("Fort Haagstaad", "An old, decrepit war fort, long since abandoned. Now home to all manner of foulness."),

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WarlordsOfDraemor
+﻿namespace WarlordsOfDraemor
 {
     public class Tavern : Store
     {
+        public Tavern(string name, string description, NPC owner) : base(name, description, owner)
+        {
+
+        }
     }
 }

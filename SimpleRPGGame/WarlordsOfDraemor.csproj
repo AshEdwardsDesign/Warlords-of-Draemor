@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characters\NPC.cs" />
+    <Compile Include="Gameplay\Locations\Exploration.cs" />
     <Compile Include="Gameplay\Locations\HubLocations\Weaponsmith.cs" />
     <Compile Include="Gameplay\Locations\HubLocations\Blacksmith.cs" />
     <Compile Include="Gameplay\Locations\HubLocations\EmptyHouse.cs" />

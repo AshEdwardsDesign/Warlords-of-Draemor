@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarlordsOfDraemor
 {
-    public class Weaponsmith : Store
+    public class Exploration
     {
-        public Weaponsmith(string name, string description, NPC owner) : base(name, description, owner)
-        {
-
-        }
     }
 }

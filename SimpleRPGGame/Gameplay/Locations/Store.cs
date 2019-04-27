@@ -18,5 +18,25 @@ namespace WarlordsOfDraemor
             storeDescription = description;
             storeOwner = owner;
         }
+
+        public bool DisplayStoreMenu()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("###############");
+            Console.WriteLine($"{GetType()}: {storeName}");
+            Console.WriteLine("###############");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine($"Welcome to {storeName}, owned by: {storeOwner.GetName()}");
+            Console.WriteLine();
+
+            // Store menu goes here
+            Console.WriteLine("The store menu will go here");
+
+            Console.ReadLine();
+
+            return false;
+        }
     }
 }
