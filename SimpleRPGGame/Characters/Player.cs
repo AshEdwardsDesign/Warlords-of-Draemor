@@ -19,9 +19,10 @@ namespace WarlordsOfDraemor
         /// Set's the players current location.
         /// </summary>
         /// <param name="loc">The location the player is travelling to.</param>
-        public void SetLocation(Location loc)
+        public bool SetLocation(Location loc)
         {
             currentLocation = loc;
+            return loc.ShowLocationMenu(this);
         }
 
         /// <summary>
