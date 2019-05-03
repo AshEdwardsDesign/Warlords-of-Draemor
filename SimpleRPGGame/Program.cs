@@ -41,11 +41,7 @@ namespace WarlordsOfDraemor
             switch (mainMenuChoice)
             {
                 case "1":
-                    bool play = true;
-                    while (play)
-                    {
-                        play = NewGameStart.StartGame();
-                    }
+                    NewGameStart.StartGame();
                     break;
                 case "2":
                     Console.Clear();

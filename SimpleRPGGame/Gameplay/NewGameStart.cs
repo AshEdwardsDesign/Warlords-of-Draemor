@@ -5,18 +5,13 @@ namespace WarlordsOfDraemor
 {
     public static class NewGameStart
     {
-        public static bool StartGame()
+        public static void StartGame()
         {
             Player player = new Player();
             PlayIntro(player);
             Location foxHound = WorldLocations.GetAllLocations().Find(v => v.GetName() == "Fox & Hound");
             player.SetLocation(foxHound);
-            bool cont = true;
-            while (cont)
-            {
-                cont = player.GetLocation().ShowLocationMenu(player);
-            }
-            return false;
+            player.GetLocation().ShowLocationMenu(player);
         }
 
         public static void PlayIntro(Player player)

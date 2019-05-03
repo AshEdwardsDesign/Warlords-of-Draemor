@@ -6,50 +6,53 @@ namespace WarlordsOfDraemor
 {
     public static class TravelMenu
     {
-        public static bool DisplayTravelMenu(Player player)
+        public static void DisplayTravelMenu(Player player)
         {
-            Console.Clear();
-            Console.WriteLine("This is the travel menu.");
-            Console.WriteLine($"Your current location: {player.GetLocation().GetName()}");
-            Console.WriteLine();
-
-            List<Location> allLocs = WorldLocations.GetAllLocations();
-
-            int count = 1;
-
-            foreach (Location loc in allLocs)
-            {
-                Console.WriteLine($"{count}: {loc.GetName()} - {loc.GetType()}");
-                count++;
-            }
-
-            Console.WriteLine();
-            Console.WriteLine("Where would you like to travel to?");
-
-            string destination = Console.ReadLine().ToLower();
-            Location chosenDest;
-
             bool invalidDest = true;
 
             while (invalidDest)
             {
+                Console.Clear();
+                Console.WriteLine("This is the travel menu.");
+                Console.WriteLine($"Your current location: {player.GetLocation().GetName()}");
+                Console.WriteLine();
+
+                List<Location> allLocs = WorldLocations.GetAllLocations();
+
+                int count = 1;
+
+                foreach (Location loc in allLocs)
+                {
+                    Console.WriteLine($"{count}: {loc.GetName()} - {loc.GetType()}");
+                    count++;
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Where would you like to travel to?");
+
+                string destination = Console.ReadLine().ToLower();
+                Location chosenDest;
+
                 if (destination == "exit" || destination == "quit")
                 {
-                    return false;
+                    Program.MainMenu();
                 }
                 else if (allLocs.Where(i => i.GetName().ToLower() == destination).Count() != 0)
                 {
                     chosenDest = allLocs.Where(i => i.GetName().ToLower() == destination).First();
-                    return player.SetLocation(chosenDest);
+                    invalidDest = false;
+                    player.SetLocation(chosenDest);
+                    break;
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, I don't recognise that destination. Please try again.");
-                    Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Sorry, I don't recognise that destination. Please press enter to try again.");
+                    Console.ResetColor();
                 }
             }
 
-            return true;
+            player.GetLocation().ShowLocationMenu(player);
 
         }
     }

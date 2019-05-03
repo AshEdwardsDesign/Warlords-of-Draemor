@@ -45,7 +45,7 @@ namespace WarlordsOfDraemor
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public bool ShowLocationMenu(Player player)
+        public void ShowLocationMenu(Player player)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -67,7 +67,7 @@ namespace WarlordsOfDraemor
             Console.Write("Where would you like to go? ");
             string playerChoice = Console.ReadLine().ToLower();
 
-            return TriggerLocation(playerChoice, player);
+            TriggerLocation(playerChoice, player);
         }
 
         private List<string> menuOptions = new List<string>() { };
@@ -130,167 +130,167 @@ namespace WarlordsOfDraemor
 
         }
 
-        private bool TriggerLocation(string choice, Player player)
+        private void TriggerLocation(string choice, Player player)
         {
-            // If player chooses to explore...
-            if (choice == "explore")
-            {
-                if (exploration != null)
-                {
+            bool invalidLoc = true;
 
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("There is nothing to explore around here.");
-                    Console.ResetColor();
-                    Console.ReadLine();
-                }
-            }
-            // If player chooses to visit the tavern...
-            if (choice == "tavern")
+            while (invalidLoc)
             {
-                if (tavern != null)
-                {
-                    bool displayStore = true;
 
-                    while (displayStore)
+                // If player chooses to explore...
+                if (choice == "explore")
+                {
+                    if (exploration != null)
                     {
-                        displayStore = tavern.DisplayStoreMenu();
+
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("There is nothing to explore around here.");
+                        Console.ResetColor();
+                        Console.ReadLine();
                     }
                 }
-                else
+                // If player chooses to visit the tavern...
+                if (choice == "tavern")
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("There isn't a tavern here.");
-                    Console.ResetColor();
-                    Console.ReadLine();
-                }
-            }
-            // If player chooses to visit the blacksmith...
-            if (choice == "blacksmith")
-            {
-                if (blacksmith != null)
-                {
-                    bool displayStore = true;
-
-                    while (displayStore)
+                    if (tavern != null)
                     {
-                        displayStore = blacksmith.DisplayStoreMenu();
+                        bool displayStore = true;
+
+                        while (displayStore)
+                        {
+                            displayStore = tavern.DisplayStoreMenu();
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("There isn't a tavern here.");
+                        Console.ResetColor();
+                        Console.ReadLine();
                     }
                 }
-                else
+                // If player chooses to visit the blacksmith...
+                if (choice == "blacksmith")
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("There isn't a blacksmith here.");
-                    Console.ResetColor();
-                    Console.ReadLine();
-                }
-            }
-            // If player chooses to visit the weaponsmith...
-            if (choice == "weaponsmith")
-            {
-                if (weaponsmith != null)
-                {
-                    bool displayStore = true;
-
-                    while (displayStore)
+                    if (blacksmith != null)
                     {
-                        displayStore = weaponsmith.DisplayStoreMenu();
+                        bool displayStore = true;
+
+                        while (displayStore)
+                        {
+                            displayStore = blacksmith.DisplayStoreMenu();
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("There isn't a blacksmith here.");
+                        Console.ResetColor();
+                        Console.ReadLine();
                     }
                 }
-                else
+                // If player chooses to visit the weaponsmith...
+                if (choice == "weaponsmith")
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("There isn't a weaponsmith here.");
-                    Console.ResetColor();
-                    Console.ReadLine();
-                }
-            }
-            // If player chooses to visit the general store...
-            if (choice == "general store")
-            {
-                if (generalStore != null)
-                {
-                    bool displayStore = true;
-
-                    while (displayStore)
+                    if (weaponsmith != null)
                     {
-                        displayStore = generalStore.DisplayStoreMenu();
+                        bool displayStore = true;
+
+                        while (displayStore)
+                        {
+                            displayStore = weaponsmith.DisplayStoreMenu();
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("There isn't a weaponsmith here.");
+                        Console.ResetColor();
+                        Console.ReadLine();
                     }
                 }
-                else
+                // If player chooses to visit the general store...
+                if (choice == "general store")
                 {
+                    if (generalStore != null)
+                    {
+                        bool displayStore = true;
+
+                        while (displayStore)
+                        {
+                            displayStore = generalStore.DisplayStoreMenu();
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("There isn't a general store here.");
+                        Console.ResetColor();
+                        Console.ReadLine();
+                    }
+                }
+                // If player chooses to set up shop...
+                if (choice == "store")
+                {
+                    if (playerStore != null)
+                    {
+
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("There isn't a store that you can buy here.");
+                        Console.ResetColor();
+                        Console.ReadLine();
+                    }
+                }
+                // If player chooses to buy a house...
+                if (choice == "house")
+                {
+                    if (playerHouse != null)
+                    {
+
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("There isn't a house that you can buy here.");
+                        Console.ResetColor();
+                        Console.ReadLine();
+                    }
+                }
+                // If player chooses to travel...
+                if (choice == "travel")
+                {
+                    TravelMenu.DisplayTravelMenu(player);
+                }
+                // If player chooses to view the character sheet...
+                if (choice == "character")
+                {
+                    bool showPlayerMenu = true;
+
+                    while (showPlayerMenu)
+                    {
+                        showPlayerMenu = player.DisplayPlayerMenu();
+                    }
+                }
+                // If player chooses to exit...
+                if (choice == "exit")
+                {
+                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("There isn't a general store here.");
+                    Console.Write("ARE YOU SURE YOU WANT TO EXIT [Y/N]? ");
                     Console.ResetColor();
-                    Console.ReadLine();
+                    string confirm = Console.ReadLine().ToLower();
+                    if (confirm == "y")
+                    {
+                        Program.MainMenu();
+                    }
                 }
             }
-            // If player chooses to set up shop...
-            if (choice == "store")
-            {
-                if (playerStore != null)
-                {
-
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("There isn't a store that you can buy here.");
-                    Console.ResetColor();
-                    Console.ReadLine();
-                }
-            }
-            // If player chooses to buy a house...
-            if (choice == "house")
-            {
-                if (playerHouse != null)
-                {
-
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("There isn't a house that you can buy here.");
-                    Console.ResetColor();
-                    Console.ReadLine();
-                }
-            }
-            // If player chooses to travel...
-            if (choice == "travel")
-            {
-                bool showTravelMenu = true;
-
-                while (showTravelMenu)
-                {
-                    showTravelMenu = TravelMenu.DisplayTravelMenu(player);
-                }
-            }
-            // If player chooses to view the character sheet...
-            if (choice == "character")
-            {
-                bool showPlayerMenu = true;
-
-                while (showPlayerMenu)
-                {
-                    showPlayerMenu = player.DisplayPlayerMenu();
-                }
-            }
-            // If player chooses to exit...
-            if (choice == "exit")
-            {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("ARE YOU SURE YOU WANT TO EXIT [Y/N]? ");
-                Console.ResetColor();
-                string confirm = Console.ReadLine().ToLower();
-                if (confirm == "y")
-                {
-                    return false;
-                }
-            }
-            return true;
         }
 
     }
