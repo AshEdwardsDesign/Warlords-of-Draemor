@@ -16,7 +16,7 @@ namespace WarlordsOfDraemor
         private Location currentLocation;
 
         /// <summary>
-        /// Set's the players current location.
+        /// Set's the players current location and display the locations menu.
         /// </summary>
         /// <param name="loc">The location the player is travelling to.</param>
         public void SetLocation(Location loc)

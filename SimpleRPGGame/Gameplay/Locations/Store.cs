@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WarlordsOfDraemor
 {
@@ -19,12 +15,12 @@ namespace WarlordsOfDraemor
             storeOwner = owner;
         }
 
-        public bool DisplayStoreMenu()
+        public void DisplayStoreMenu()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("###############");
-            Console.WriteLine($"{GetType()}: {storeName}");
+            Console.WriteLine($"{GetType().Name.ToUpper()}: {storeName}");
             Console.WriteLine("###############");
             Console.ResetColor();
             Console.WriteLine();
@@ -32,11 +28,32 @@ namespace WarlordsOfDraemor
             Console.WriteLine();
 
             // Store menu goes here
-            Console.WriteLine("The store menu will go here");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("STORE MENU");
+            Console.ResetColor();
 
-            Console.ReadLine();
+            Console.WriteLine("1. Talk to the store owner");
+            Console.WriteLine("2. Buy");
+            Console.WriteLine("3. Sell");
+            Console.WriteLine("4. Purchase the store");
+            Console.WriteLine("5. Leave");
 
-            return false;
+            // Get player input
+            Console.WriteLine();
+            Console.Write("What would you like to do? ");
+            string choice = Console.ReadLine().ToLower();
+
+            // Parse the player input
+            if (choice == "talk")
+            {
+
+            } else if (choice == "buy")
+            {
+
+            }
+
+
+            
         }
     }
 }

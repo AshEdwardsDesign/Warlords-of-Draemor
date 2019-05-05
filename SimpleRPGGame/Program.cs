@@ -6,16 +6,10 @@ namespace WarlordsOfDraemor
     {
         static void Main(string[] args)
         {
-
-            bool replay = true;
-
-            while (replay)
-            {
-                replay = MainMenu();
-            }
+            MainMenu();
         }
 
-        public static bool MainMenu()
+        public static void MainMenu()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -50,13 +44,17 @@ namespace WarlordsOfDraemor
                     Console.WriteLine("Please press enter to exit the application.");
                     Console.ResetColor();
                     Console.ReadLine();
-                    return false;
+                    break;
                 default:
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Sorry, I didn't recognise that option!");
+                    Console.ResetColor();
+                    Console.WriteLine("Press any key to try again.");
+                    Console.ReadKey();
+                    MainMenu();
                     break;
             }
-
-            return true;
         }
     }
 }
