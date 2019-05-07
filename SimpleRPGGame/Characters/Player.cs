@@ -200,7 +200,7 @@ namespace WarlordsOfDraemor
                     Console.ResetColor();
                     break;
             }
-            
+
             level = 1;
             currentXP = 0;
             nextLevelXP = 100;
@@ -258,7 +258,7 @@ namespace WarlordsOfDraemor
             Console.WriteLine($"Current/Max Health: {currentHealth}/{maxHealth} ({healthPercentage.ToString("F2")}%)");
             Console.WriteLine($"Current Armor rating: {currentArmor}");
             Console.WriteLine();
-            
+
             Console.WriteLine("Press enter to continue.");
             Console.ReadLine();
         }
@@ -272,12 +272,67 @@ namespace WarlordsOfDraemor
             return name;
         }
 
-        public bool DisplayPlayerMenu()
+        /// <summary>
+        /// Display the playter menu, which allows access to the character sheet, inventory and more.
+        /// </summary>
+        public void DisplayPlayerMenu(Player player)
         {
+            // Clear the screen and display the header bar
             Console.Clear();
-            Console.WriteLine("This is the player menu.");
-            Console.ReadLine();
-            return false;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("##########");
+            Console.WriteLine("CHARACTER MENU");
+            Console.WriteLine("##########");
+            Console.ResetColor();
+            Console.WriteLine();
+
+            // List the choices available
+            Console.WriteLine("1. View Inventory");
+            Console.WriteLine("2. View Character Sheet");
+            Console.WriteLine("3. Cancel");
+
+            // Get the players choice
+            Console.WriteLine();
+            Console.Write("Please choose an option: ");
+            string choice = Console.ReadLine().ToLower();
+
+            if (choice == "inventory" || choice == "1")
+            {
+                DisplayInventory();
+                DisplayPlayerMenu(player);
+            }
+            else if (choice == "character" || choice == "2")
+            {
+                DisplayCharacterSheet();
+                DisplayPlayerMenu(player);
+            }
+            else if (choice == "cancel" || choice == "exit")
+            {
+                currentLocation.ShowLocationMenu(player);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Sorry, I dont' recognise that option.");
+                Console.ResetColor();
+                Console.WriteLine("Press any key to try again.");
+                Console.ReadKey();
+                DisplayPlayerMenu(player);
+            }
+
+
+        }
+
+        public void DisplayInventory()
+        {
+            // Clear the screen and display the header bar
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("##########");
+            Console.WriteLine("INVENTORY");
+            Console.WriteLine("##########");
+            Console.ResetColor();
+            Console.WriteLine();
         }
 
     }

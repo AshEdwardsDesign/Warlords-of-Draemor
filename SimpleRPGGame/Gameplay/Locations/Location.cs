@@ -246,7 +246,7 @@ namespace WarlordsOfDraemor
             // If player chooses to view the character sheet...
             else if (choice == "character")
             {
-                player.DisplayPlayerMenu();
+                player.DisplayPlayerMenu(player);
             }
             // If player chooses to exit...
             else if (choice == "exit")
