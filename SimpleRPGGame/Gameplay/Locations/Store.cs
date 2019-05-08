@@ -20,7 +20,7 @@ namespace WarlordsOfDraemor
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("###############");
-            Console.WriteLine($"{GetType().Name.ToUpper()}: {storeName}");
+            Console.WriteLine($"{GetType().Name}: {storeName}");
             Console.WriteLine("###############");
             Console.ResetColor();
             Console.WriteLine();

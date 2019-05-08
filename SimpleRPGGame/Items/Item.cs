@@ -34,5 +34,10 @@
         {
             return rarity;
         }
+
+        public string GetItemType()
+        {
+            return GetType().Name;
+        }
     }
 }

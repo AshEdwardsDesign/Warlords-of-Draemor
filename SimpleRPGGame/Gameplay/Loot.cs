@@ -34,6 +34,7 @@ namespace WarlordsOfDraemor
         };
 
         public static List<Item> allWeapons = allGameLoot.Where(v => v.GetType() == typeof(Weapon)).ToList();
+        public static List<Item> allArmors = allGameLoot.Where(v => v.GetType() == typeof(Armor)).ToList();
         public static List<Item> allShields = allGameLoot.Where(v => v.GetType() == typeof(Shield)).ToList();
         public static List<Item> allLegArmors = allGameLoot.Where(v => v.GetType() == typeof(LegArmor)).ToList();
         public static List<Item> allHelmets = allGameLoot.Where(v => v.GetType() == typeof(Helmet)).ToList();
@@ -61,6 +62,8 @@ namespace WarlordsOfDraemor
             Console.WriteLine($"Gold: {player.GetGoldAmount()}\t\t\tPlayer xp: {player.GetXPAmount()}");
             Console.WriteLine();
             enemy.Death(player);
+            player.GiveItem(allWeapons.Where(i => i.getName() == "Rusty Iron Sword").First());
+            Console.WriteLine("You have looted a Rusty Iron Sword from the corpse.");
             Console.ReadLine();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WarlordsOfDraemor
 {
@@ -38,6 +39,10 @@ namespace WarlordsOfDraemor
         private List<Item> inventory = new List<Item>();
 
         // TO-DO Add item to inventory method
+        public void GiveItem(Item item)
+        {
+            inventory.Add(item);
+        }
 
         // TO-DO Remove item from inventory method
 
@@ -57,7 +62,9 @@ namespace WarlordsOfDraemor
             currentXP += xpGained;
             Console.WriteLine($"You have gained {xpGained} XP.");
             if (currentXP >= nextLevelXP)
+            {
                 LevelUp();
+            }
         }
 
         /// <summary>
@@ -275,7 +282,7 @@ namespace WarlordsOfDraemor
         /// <summary>
         /// Display the playter menu, which allows access to the character sheet, inventory and more.
         /// </summary>
-        public void DisplayPlayerMenu(Player player)
+        public void DisplayPlayerMenu()
         {
             // Clear the screen and display the header bar
             Console.Clear();
@@ -299,16 +306,16 @@ namespace WarlordsOfDraemor
             if (choice == "inventory" || choice == "1")
             {
                 DisplayInventory();
-                DisplayPlayerMenu(player);
+                DisplayPlayerMenu();
             }
             else if (choice == "character" || choice == "2")
             {
                 DisplayCharacterSheet();
-                DisplayPlayerMenu(player);
+                DisplayPlayerMenu();
             }
             else if (choice == "cancel" || choice == "exit")
             {
-                currentLocation.ShowLocationMenu(player);
+                currentLocation.ShowLocationMenu(this);
             }
             else
             {
@@ -317,7 +324,7 @@ namespace WarlordsOfDraemor
                 Console.ResetColor();
                 Console.WriteLine("Press any key to try again.");
                 Console.ReadKey();
-                DisplayPlayerMenu(player);
+                DisplayPlayerMenu();
             }
 
 
@@ -333,7 +340,168 @@ namespace WarlordsOfDraemor
             Console.WriteLine("##########");
             Console.ResetColor();
             Console.WriteLine();
+
+            // Menu options
+            Console.WriteLine("1. Display All");
+            Console.WriteLine("2. Weapons");
+            Console.WriteLine("3. Armors");
+            Console.WriteLine("4. Potions");
+            Console.WriteLine("5. Books");
+            Console.WriteLine("6. Cancel");
+            Console.WriteLine();
+
+            // Get the players choice
+            Console.Write("Please choose an option: ");
+            string choice = Console.ReadLine().ToLower();
+
+            if (choice == "1" || choice == "all")
+            {
+                DisplayAll();
+            }
+            else if (choice == "2" || choice == "weapons")
+            {
+                DisplayWeapons();
+            }
+            else if (choice == "3" || choice == "armors")
+            {
+                DisplayArmors();
+            }
+            else if (choice == "4" || choice == "potions")
+            {
+                DisplayPotions();
+            }
+            else if (choice == "5" || choice == "books")
+            {
+                DisplayBooks();
+            }
+            else if (choice == "6" || choice == "cancel")
+            {
+                return;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Sorry, I don't recognise that option");
+                Console.ResetColor();
+                Console.WriteLine("Press any key to try again.");
+                Console.ReadKey();
+                DisplayInventory();
+            }
         }
 
+        public void DisplayAll()
+        {
+            // Clear the screen and display the header bar
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("##########");
+            Console.WriteLine("INVENTORY > All items");
+            Console.WriteLine("##########");
+            Console.ResetColor();
+            Console.WriteLine();
+
+            // Populate the list
+            int count = 1;
+
+            if (inventory.Count != 0)
+            {
+                foreach (Item item in inventory)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("{0, -10}{1,-20}{2, -10}{3, -10}{4, -10}", "Item", "Name", "Type", "Value", "Weight");
+                    Console.ResetColor();
+                    Console.WriteLine("{0, -10}{1,-20}{2, -10}{3, -10}{4, -10}", count, item.getName(), item.GetItemType(), item.getValue(), item.getWeight());
+                    count++;
+                }
+                Console.WriteLine();
+                Console.WriteLine("Please choose an option (or cancel): ");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("You don't have anything in your inventory.");
+                Console.WriteLine("Press any key to go back.");
+                Console.ReadKey();
+                DisplayInventory();
+            }
+
+        }
+
+        public void DisplayWeapons()
+        {
+            // Clear the screen and display the header bar
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("##########");
+            Console.WriteLine("INVENTORY > Weapons");
+            Console.WriteLine("##########");
+            Console.ResetColor();
+            Console.WriteLine();
+
+
+            // Populate the list
+            int count = 1;
+
+            if (inventory.Count != 0)
+            {
+                var weapons = inventory.Where(i => i.GetType() == typeof(Weapon)).ToList();
+
+                foreach (Weapon item in weapons)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("{0, -10}{1,-20}{2, -10}{3, -10}{4, -10}", "Item", "Name", "Damage", "Value", "Weight");
+                    Console.ResetColor();
+                    //Console.WriteLine($"{count}.\t{item.getName()}\t\t{item.GetItemType()}\t\t{item.getValue()}\t\t{item.getWeight()}");
+                    Console.WriteLine("{0, -10}{1,-20}{2, -10}{3, -10}{4, -10}", count, item.getName(), item.GetDamage(), item.getValue(), item.getWeight());
+                    count++;
+                }
+                Console.WriteLine();
+                Console.WriteLine("Please choose an option (or cancel): ");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("You don't have any weapons in your inventory.");
+                Console.WriteLine("Press any key to go back.");
+                Console.ReadKey();
+                DisplayInventory();
+            }
+        }
+
+        public void DisplayArmors()
+        {
+            // Clear the screen and display the header bar
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("##########");
+            Console.WriteLine("INVENTORY > Armor");
+            Console.WriteLine("##########");
+            Console.ResetColor();
+            Console.WriteLine();
+        }
+
+        public void DisplayBooks()
+        {
+            // Clear the screen and display the header bar
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("##########");
+            Console.WriteLine("INVENTORY > Books");
+            Console.WriteLine("##########");
+            Console.ResetColor();
+            Console.WriteLine();
+        }
+
+        public void DisplayPotions()
+        {
+            // Clear the screen and display the header bar
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("##########");
+            Console.WriteLine("INVENTORY > Potions");
+            Console.WriteLine("##########");
+            Console.ResetColor();
+            Console.WriteLine();
+        }
     }
 }

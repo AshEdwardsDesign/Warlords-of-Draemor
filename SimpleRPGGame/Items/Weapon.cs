@@ -20,5 +20,10 @@
             value = itemValue;
             weight = itemWeight;
         }
+
+        public int GetDamage()
+        {
+            return damage;
+        }
     }
 }
