@@ -1,4 +1,6 @@
-﻿namespace WarlordsOfDraemor
+﻿using System.Collections.Generic;
+
+namespace WarlordsOfDraemor
 {
     public class Character
     {
@@ -20,11 +22,15 @@
         }
 
         // STATS
-        protected int strength;
-        protected int intelligence;
-        protected int dexterity;
-        protected int constitution;
+        protected Strength strength;
+        protected Intelligence intelligence;
+        protected Agility agility;
+        protected Constitution constitution;
+        protected Luck luck;
         protected int level;
+
+        // STATUS EFFECTS
+        protected List<StatusEffect> statusEffects;
 
         // HEALTH & ARMOR
         protected int maxHealth;
@@ -60,6 +66,18 @@
         public int GetHealth()
         {
             return currentHealth;
+        }
+
+        public int getTotalArmorRating()
+        {
+            int total = 0;
+
+            if (helmet != null) total += helmet.GetArmorRating();
+            if (chest != null) total += chest.GetArmorRating();
+            if (gauntlets != null) total += gauntlets.GetArmorRating();
+            if (legs != null) total += legs.GetArmorRating();
+
+            return total;
         }
 
     }

@@ -45,6 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characters\NPC.cs" />
+    <Compile Include="Characters\Stats\Intelligence.cs" />
+    <Compile Include="Characters\Stats\Agility.cs" />
+    <Compile Include="Characters\Stats\Constitution.cs" />
+    <Compile Include="Characters\Stats\Luck.cs" />
+    <Compile Include="Characters\Stats\Strength.cs" />
+    <Compile Include="Characters\Stats\Stat.cs" />
     <Compile Include="Gameplay\Locations\Exploration.cs" />
     <Compile Include="Gameplay\Locations\HubLocations\Weaponsmith.cs" />
     <Compile Include="Gameplay\Locations\HubLocations\Blacksmith.cs" />
@@ -78,6 +84,7 @@
     <Compile Include="Items\LegArmor.cs" />
     <Compile Include="Items\Potions.cs" />
     <Compile Include="Items\Shield.cs" />
+    <Compile Include="Items\StatusEffect.cs" />
     <Compile Include="Items\Weapon.cs" />
     <Compile Include="Characters\Player.cs" />
     <Compile Include="Gameplay\Locations\Location.cs" />

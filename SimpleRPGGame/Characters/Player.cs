@@ -237,37 +237,42 @@ namespace WarlordsOfDraemor
             Console.WriteLine("// CHARACTER BIO //");
             Console.ResetColor();
             Console.WriteLine();
-            Console.WriteLine($"Character Name: {name}");
-            Console.WriteLine($"Character hails from: {homeName}");
-            Console.WriteLine($"Character Class: {characterClass}");
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Character Name:", name, "Hometown:", homeName);
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("// CHARACTER STATS //");
             Console.ResetColor();
             Console.WriteLine();
-            Console.WriteLine($"Strength: {strength}");
-            Console.WriteLine($"Intelligence: {intelligence}");
-            Console.WriteLine($"Dexterity: {dexterity}");
-            Console.WriteLine($"Constitution: {constitution}");
-            Console.WriteLine($"Charisma: {charisma}");
-            Console.WriteLine();
-            Console.WriteLine($"Current Gold: {currentGold}");
-            Console.WriteLine($"Current XP: {currentXP}");
-            Console.WriteLine($"Next Level XP: {nextLevelXP}");
-            Console.WriteLine($"Available Skill Points: {skillPoints}");
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Strength:", strength, "Current Gold:", currentGold);
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Intelligence:", intelligence, "Current XP:", currentXP);
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Dexterity:", dexterity, "Next Level XP:", nextLevelXP);
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Constitution:", constitution, "Available SP:", skillPoints);
+            Console.WriteLine("{0, -20}{1, -20}", "Charisma:", charisma);
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("// CURRENT STATUS //");
             Console.ResetColor();
             Console.WriteLine();
-            Console.WriteLine($"Current/Max Health: {currentHealth}/{maxHealth} ({healthPercentage.ToString("F2")}%)");
-            Console.WriteLine($"Current Armor rating: {currentArmor}");
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Current Health:", currentHealth, "Max Health:", maxHealth);
             Console.WriteLine();
 
-            Console.WriteLine("Press enter to continue.");
-            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("// EQUIPMENT //");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Helmet:", GetItemPresence(helmet), "Weapon:", GetItemPresence(weapon));
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Chest:", GetItemPresence(chest), "Shield:", GetItemPresence(shield));
+            Console.WriteLine("{0, -20}{1, -20}", "Gauntlets:", GetItemPresence(gauntlets));
+            Console.WriteLine("{0, -20}{1, -20}", "Boots:", GetItemPresence(legs));
+            Console.WriteLine("{0, -20}{1, -20}", "TOTAL DEFENCE:", getTotalArmorRating());
+            Console.WriteLine();
+
+            Console.WriteLine();
+
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadKey();
         }
 
         /// <summary>
@@ -419,7 +424,9 @@ namespace WarlordsOfDraemor
             }
             else
             {
+
                 Console.WriteLine("You don't have anything in your inventory.");
+                Console.ResetColor();
                 Console.WriteLine("Press any key to go back.");
                 Console.ReadKey();
                 DisplayInventory();
@@ -442,7 +449,7 @@ namespace WarlordsOfDraemor
             // Populate the list
             int count = 1;
 
-            if (inventory.Count != 0)
+            if (inventory.Where(i => i.GetType() == typeof(Weapon)).ToList().Count != 0)
             {
                 var weapons = inventory.Where(i => i.GetType() == typeof(Weapon)).ToList();
 
@@ -451,7 +458,6 @@ namespace WarlordsOfDraemor
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("{0, -10}{1,-20}{2, -10}{3, -10}{4, -10}", "Item", "Name", "Damage", "Value", "Weight");
                     Console.ResetColor();
-                    //Console.WriteLine($"{count}.\t{item.getName()}\t\t{item.GetItemType()}\t\t{item.getValue()}\t\t{item.getWeight()}");
                     Console.WriteLine("{0, -10}{1,-20}{2, -10}{3, -10}{4, -10}", count, item.getName(), item.GetDamage(), item.getValue(), item.getWeight());
                     count++;
                 }
@@ -461,7 +467,9 @@ namespace WarlordsOfDraemor
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("You don't have any weapons in your inventory.");
+                Console.ResetColor();
                 Console.WriteLine("Press any key to go back.");
                 Console.ReadKey();
                 DisplayInventory();
@@ -478,6 +486,35 @@ namespace WarlordsOfDraemor
             Console.WriteLine("##########");
             Console.ResetColor();
             Console.WriteLine();
+
+            // Populate the list
+            int count = 1;
+
+            if (inventory.Where(i => i.GetType() == typeof(Armor)).ToList().Count != 0)
+            {
+                var armors = inventory.Where(i => i.GetType() == typeof(Armor)).ToList();
+
+                foreach (Armor item in armors)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("{0, -10}{1,-20}{2, -10}{3, -10}{4, -10}", "Item", "Name", "Defence", "Value", "Weight");
+                    Console.ResetColor();
+                    Console.WriteLine("{0, -10}{1,-20}{2, -10}{3, -10}{4, -10}", count, item.getName(), item.GetArmorRating(), item.getValue(), item.getWeight());
+                    count++;
+                }
+                Console.WriteLine();
+                Console.WriteLine("Please choose an option (or cancel): ");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You don't have any armor in your inventory.");
+                Console.ResetColor();
+                Console.WriteLine("Press any key to go back.");
+                Console.ReadKey();
+                DisplayInventory();
+            }
         }
 
         public void DisplayBooks()
@@ -490,6 +527,35 @@ namespace WarlordsOfDraemor
             Console.WriteLine("##########");
             Console.ResetColor();
             Console.WriteLine();
+
+            // Populate the list
+            int count = 1;
+
+            if (inventory.Where(i => i.GetType() == typeof(Book)).ToList().Count != 0)
+            {
+                var books = inventory.Where(i => i.GetType() == typeof(Book)).ToList();
+
+                foreach (Book item in books)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("{0, -10}{1,-20}{3, -10}{4, -10}", "Item", "Name", "Value", "Weight");
+                    Console.ResetColor();
+                    Console.WriteLine("{0, -10}{1,-20}{3, -10}{4, -10}", count, item.getName(), item.getValue(), item.getWeight());
+                    count++;
+                }
+                Console.WriteLine();
+                Console.WriteLine("Please choose an option (or cancel): ");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You don't have any books in your inventory.");
+                Console.ResetColor();
+                Console.WriteLine("Press any key to go back.");
+                Console.ReadKey();
+                DisplayInventory();
+            }
         }
 
         public void DisplayPotions()
@@ -502,6 +568,47 @@ namespace WarlordsOfDraemor
             Console.WriteLine("##########");
             Console.ResetColor();
             Console.WriteLine();
+
+            // Populate the list
+            int count = 1;
+
+            if (inventory.Where(i => i.GetType() == typeof(Potion)).ToList().Count != 0)
+            {
+                var potions = inventory.Where(i => i.GetType() == typeof(Potion)).ToList();
+
+                foreach (Potion item in potions)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("{0, -10}{1,-20}{3, -10}{4, -10}", "Item", "Name", "Value", "Weight");
+                    Console.ResetColor();
+                    Console.WriteLine("{0, -10}{1,-20}{3, -10}{4, -10}", count, item.getName(), item.getValue(), item.getWeight());
+                    count++;
+                }
+                Console.WriteLine();
+                Console.WriteLine("Please choose an option (or cancel): ");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You don't have any potions in your inventory.");
+                Console.ResetColor();
+                Console.WriteLine("Press any key to go back.");
+                Console.ReadKey();
+                DisplayInventory();
+            }
+        }
+
+        public string GetItemPresence(Item item)
+        {
+            if (item == null)
+            {
+                return "Not Equipped";
+            }
+            else
+            {
+                return item.getName();
+            }
         }
     }
 }
