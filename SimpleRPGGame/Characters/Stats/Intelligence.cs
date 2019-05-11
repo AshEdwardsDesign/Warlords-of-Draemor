@@ -8,5 +8,9 @@ namespace WarlordsOfDraemor
 {
     public class Intelligence : Stat
     {
+        public Intelligence(int value) : base(value)
+        {
+
+        }
     }
 }

@@ -7,7 +7,8 @@ namespace WarlordsOfDraemor
         // GENERAL INFO
         protected string name;
         protected string homeName;
-        protected CharacterClass characterClass;
+        protected string characterClass;
+        protected CharacterClass enemyClass;
         protected bool alive = true;
         public bool isAlive
         {
@@ -26,6 +27,7 @@ namespace WarlordsOfDraemor
         protected Intelligence intelligence;
         protected Agility agility;
         protected Constitution constitution;
+        protected Charisma charisma;
         protected Luck luck;
         protected int level;
 

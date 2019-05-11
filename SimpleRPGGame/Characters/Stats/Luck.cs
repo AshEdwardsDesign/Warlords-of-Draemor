@@ -8,5 +8,9 @@ namespace WarlordsOfDraemor
 {
     public class Luck : Stat
     {
+        public Luck(int value) : base(value)
+        {
+
+        }
     }
 }

@@ -49,6 +49,8 @@
     <Compile Include="Characters\Stats\Agility.cs" />
     <Compile Include="Characters\Stats\Constitution.cs" />
     <Compile Include="Characters\Stats\Luck.cs" />
+    <Compile Include="Characters\Stats\StatModifier.cs" />
+    <Compile Include="Characters\Stats\Charisma.cs" />
     <Compile Include="Characters\Stats\Strength.cs" />
     <Compile Include="Characters\Stats\Stat.cs" />
     <Compile Include="Gameplay\Locations\Exploration.cs" />

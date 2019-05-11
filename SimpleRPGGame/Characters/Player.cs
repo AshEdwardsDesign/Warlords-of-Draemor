@@ -11,7 +11,6 @@ namespace WarlordsOfDraemor
         private int nextLevelXP;
         private int currentGold;
         private int skillPoints;
-        private int charisma;
 
         // LOCATIONS
         private Location currentLocation;
@@ -158,45 +157,49 @@ namespace WarlordsOfDraemor
             switch (classChoice)
             {
                 case "knight":
-                    strength = 3;
-                    intelligence = 1;
-                    dexterity = 1;
-                    constitution = 2;
-                    charisma = 1;
-                    characterClass = CharacterClass.Knight;
+                    strength = new Strength(3);
+                    intelligence = new Intelligence(1);
+                    agility = new Agility(1);
+                    constitution = new Constitution(2);
+                    charisma = new Charisma(1);
+                    luck = new Luck(1);
+                    characterClass = "Knight";
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("You have chosen Knight!");
                     Console.ResetColor();
                     break;
                 case "mage":
-                    strength = 1;
-                    intelligence = 3;
-                    dexterity = 2;
-                    constitution = 1;
-                    charisma = 1;
-                    characterClass = CharacterClass.Mage;
+                    strength = new Strength(1);
+                    intelligence = new Intelligence(3);
+                    agility = new Agility(2);
+                    constitution = new Constitution(1);
+                    charisma = new Charisma(1);
+                    luck = new Luck(1);
+                    characterClass = "Mage";
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("You have chosen Mage!");
                     Console.ResetColor();
                     break;
                 case "thief":
-                    strength = 1;
-                    intelligence = 2;
-                    dexterity = 3;
-                    constitution = 1;
-                    charisma = 1;
-                    characterClass = CharacterClass.Thief;
+                    strength = new Strength(1);
+                    intelligence = new Intelligence(2);
+                    agility = new Agility(3);
+                    constitution = new Constitution(1);
+                    charisma = new Charisma(1);
+                    luck = new Luck(1);
+                    characterClass = "Thief";
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("You have chosen Thief!");
                     Console.ResetColor();
                     break;
                 case "warlock":
-                    strength = 2;
-                    intelligence = 2;
-                    dexterity = 2;
-                    constitution = 2;
-                    charisma = 1;
-                    characterClass = CharacterClass.Warlock;
+                    strength = new Strength(2);
+                    intelligence = new Intelligence(2);
+                    agility = new Agility(2);
+                    constitution = new Constitution(2);
+                    charisma = new Charisma(1);
+                    luck = new Luck(1);
+                    characterClass = "Warlock";
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("You have chosen Warlock!");
                     Console.ResetColor();
@@ -246,7 +249,7 @@ namespace WarlordsOfDraemor
             Console.WriteLine();
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Strength:", strength, "Current Gold:", currentGold);
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Intelligence:", intelligence, "Current XP:", currentXP);
-            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Dexterity:", dexterity, "Next Level XP:", nextLevelXP);
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Dexterity:", agility, "Next Level XP:", nextLevelXP);
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Constitution:", constitution, "Available SP:", skillPoints);
             Console.WriteLine("{0, -20}{1, -20}", "Charisma:", charisma);
             Console.WriteLine();

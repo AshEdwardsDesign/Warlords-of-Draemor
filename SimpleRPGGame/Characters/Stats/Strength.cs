@@ -8,5 +8,9 @@ namespace WarlordsOfDraemor
 {
     public class Strength : Stat
     {
+        public Strength(int value) : base(value)
+        {
+
+        }
     }
 }

@@ -8,5 +8,9 @@ namespace WarlordsOfDraemor
 {
     public class Agility : Stat
     {
+        public Agility(int value) : base(value)
+        {
+
+        }
     }
 }

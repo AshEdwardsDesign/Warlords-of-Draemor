@@ -8,5 +8,9 @@ namespace WarlordsOfDraemor
 {
     public class Constitution : Stat
     {
+        public Constitution(int value) : base(value)
+        {
+
+        }
     }
 }
