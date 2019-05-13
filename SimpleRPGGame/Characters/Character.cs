@@ -8,7 +8,6 @@ namespace WarlordsOfDraemor
         protected string name;
         protected string homeName;
         protected string characterClass;
-        protected CharacterClass enemyClass;
         protected bool alive = true;
         public bool isAlive
         {
@@ -39,6 +38,14 @@ namespace WarlordsOfDraemor
         protected int currentHealth;
         protected decimal healthPercentage;
         protected int currentArmor;
+
+        // STAMINA
+        protected int currentStamina;
+        protected int maxStamina;
+
+        // MANA
+        protected int currentMana;
+        protected int maxMana;
 
         // EQUIPMENT SLOTS
         protected Weapon weapon;

@@ -133,83 +133,14 @@ namespace WarlordsOfDraemor
             Console.WriteLine("Before your adventure throughout Draemor begins, you will create your character.");
             Console.WriteLine("The following wizard will ask you some simple details, after which you will be shown your character sheet and your adventure can begin!");
             Console.ReadLine();
-
-            Console.Clear();
             Console.Write("What is your characters name: ");
             name = Console.ReadLine();
-
-            Console.Clear();
             Console.Write("What is the name of your characters hometown: ");
             homeName = Console.ReadLine();
 
-            Console.Clear();
-            Console.Write("Which character class would you like to be? Knight, Mage, Thief or Warlock:\n " +
-                "\n" +
-                "Class\t\tStrength\tInteligence\tDexterity\tConstitution\tCharisma\n" +
-                "Knight\t\t3\t\t1\t\t1\t\t2\t\t1\n" +
-                "Mage\t\t1\t\t3\t\t2\t\t1\t\t1\n" +
-                "Thief\t\t1\t\t2\t\t3\t\t1\t\t1\n" +
-                "Warlock\t\t2\t\t2\t\t2\t\t2\t\t1\n\n" +
-                "Your choice (or type random): ");
-
-            string classChoice = Console.ReadLine().ToLower();
-
-            switch (classChoice)
-            {
-                case "knight":
-                    strength = new Strength(3);
-                    intelligence = new Intelligence(1);
-                    agility = new Agility(1);
-                    constitution = new Constitution(2);
-                    charisma = new Charisma(1);
-                    luck = new Luck(1);
-                    characterClass = "Knight";
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("You have chosen Knight!");
-                    Console.ResetColor();
-                    break;
-                case "mage":
-                    strength = new Strength(1);
-                    intelligence = new Intelligence(3);
-                    agility = new Agility(2);
-                    constitution = new Constitution(1);
-                    charisma = new Charisma(1);
-                    luck = new Luck(1);
-                    characterClass = "Mage";
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("You have chosen Mage!");
-                    Console.ResetColor();
-                    break;
-                case "thief":
-                    strength = new Strength(1);
-                    intelligence = new Intelligence(2);
-                    agility = new Agility(3);
-                    constitution = new Constitution(1);
-                    charisma = new Charisma(1);
-                    luck = new Luck(1);
-                    characterClass = "Thief";
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("You have chosen Thief!");
-                    Console.ResetColor();
-                    break;
-                case "warlock":
-                    strength = new Strength(2);
-                    intelligence = new Intelligence(2);
-                    agility = new Agility(2);
-                    constitution = new Constitution(2);
-                    charisma = new Charisma(1);
-                    luck = new Luck(1);
-                    characterClass = "Warlock";
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("You have chosen Warlock!");
-                    Console.ResetColor();
-                    break;
-                default:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Sorry, I don't recognise that class, please try again.");
-                    Console.ResetColor();
-                    break;
-            }
+            Console.WriteLine("You will now determine your characters base stats.");
+            Console.ReadKey();
+            CreateBaseStats();
 
             level = 1;
             currentXP = 0;
@@ -225,6 +156,48 @@ namespace WarlordsOfDraemor
             Console.WriteLine("Press enter to continue and view your character sheet.");
             Console.ReadLine();
             DisplayCharacterSheet();
+        }
+
+        private void CreateBaseStats()
+        {
+            GiveSkillPoints(10);
+            Console.WriteLine($"You have {skillPoints} skill points available to spend.");
+            Console.WriteLine("Please allocate your skill points as you wish between the below stats:");
+            Console.WriteLine();
+            Console.WriteLine("Strength: Determines how much damage you do and how much you can carry.");
+            Console.WriteLine("Intelligence: Determines how much XP you earn and your total mana.");
+            Console.WriteLine("Agility: Determines your ability to avoid taking damage and your total stamina.");
+            Console.WriteLine("Constitution: Determines how much health you have, the bonus from potions and your resistance to negative effects.");
+            Console.WriteLine("Charisma: Determines the buying and selling prices at stores and your ability to convince people to see your way.");
+            Console.WriteLine("Luck: Determines the likelihood of scoring a critical hit and has a chance to effect everything you do.");
+
+            Console.Write("STRENGTH: ");
+            int.TryParse(Console.ReadLine(), out int strengthChoice);
+
+            Console.Write("INTELLIGENCE: ");
+            int.TryParse(Console.ReadLine(), out int intelligenceChoice);
+
+            Console.Write("AGILITY: ");
+            int.TryParse(Console.ReadLine(), out int agilityChoice);
+
+            Console.Write("CONSTITUTION: ");
+            int.TryParse(Console.ReadLine(), out int constitutionChoice);
+
+            Console.Write("CHARISMA: ");
+            int.TryParse(Console.ReadLine(), out int charismaChoice);
+
+            Console.Write("LUCK: ");
+            int.TryParse(Console.ReadLine(), out int luckChoice);
+
+            Console.WriteLine();
+            Console.WriteLine($"Str: {strengthChoice}, agi: {agilityChoice}, luck: {luckChoice}");
+            Console.ReadKey();
+
+        }
+
+        private void GiveSkillPoints(int points)
+        {
+            skillPoints += points;
         }
 
         // DISPLAY CHARACTER SHEET

@@ -35,10 +35,12 @@ namespace WarlordsOfDraemor
         public Enemy(Player player)
         {
             EnemyClass = ChooseRandomEnemyClass();
-            strength = 1;
-            intelligence = 1;
-            dexterity = 1;
-            constitution = 1;
+            strength = new Strength(1);
+            intelligence = new Intelligence(1);
+            agility = new Agility(1);
+            constitution = new Constitution(1);
+            charisma = new Charisma(1);
+            luck = new Luck(1);
             currentHealth = 50;
             maxHealth = currentHealth;
         }
