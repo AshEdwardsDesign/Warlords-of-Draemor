@@ -70,6 +70,16 @@ namespace WarlordsOfDraemor
             return temp;
         }
 
+        public int GetBaseValue()
+        {
+            return baseValue;
+        }
+
+        public int GetEffectiveValue()
+        {
+            return EffectiveValue;
+        }
+
 
     }
 }

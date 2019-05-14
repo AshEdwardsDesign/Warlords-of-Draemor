@@ -124,22 +124,25 @@ namespace WarlordsOfDraemor
         // CHARACTER CREATION
         public Player()
         {
+            string title = "CHARACTER CREATION WIZARD (PART 1)";
+            string seperator = new string('#', title.Length);
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Welcome to the new Character Creation Wizard!");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(seperator);
+            Console.WriteLine(title);
+            Console.WriteLine(seperator);
             Console.ResetColor();
 
             Console.WriteLine();
             Console.WriteLine("Before your adventure throughout Draemor begins, you will create your character.");
+            Console.WriteLine();
             Console.WriteLine("The following wizard will ask you some simple details, after which you will be shown your character sheet and your adventure can begin!");
             Console.ReadLine();
             Console.Write("What is your characters name: ");
             name = Console.ReadLine();
             Console.Write("What is the name of your characters hometown: ");
             homeName = Console.ReadLine();
-
-            Console.WriteLine("You will now determine your characters base stats.");
-            Console.ReadKey();
+            
             CreateBaseStats();
 
             level = 1;
@@ -160,39 +163,88 @@ namespace WarlordsOfDraemor
 
         private void CreateBaseStats()
         {
-            GiveSkillPoints(10);
-            Console.WriteLine($"You have {skillPoints} skill points available to spend.");
-            Console.WriteLine("Please allocate your skill points as you wish between the below stats:");
+            int newCharSP = 20;
+
+            string title = "CHARACTER CREATION WIZARD (PART 2)";
+            string seperator = new string('#', title.Length);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(seperator);
+            Console.WriteLine(title);
+            Console.WriteLine(seperator);
+            Console.ResetColor();
             Console.WriteLine();
-            Console.WriteLine("Strength: Determines how much damage you do and how much you can carry.");
-            Console.WriteLine("Intelligence: Determines how much XP you earn and your total mana.");
-            Console.WriteLine("Agility: Determines your ability to avoid taking damage and your total stamina.");
-            Console.WriteLine("Constitution: Determines how much health you have, the bonus from potions and your resistance to negative effects.");
-            Console.WriteLine("Charisma: Determines the buying and selling prices at stores and your ability to convince people to see your way.");
-            Console.WriteLine("Luck: Determines the likelihood of scoring a critical hit and has a chance to effect everything you do.");
+
+            Console.WriteLine("You will now determine your characters base stats.");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"You have {newCharSP} skill points available to spend. You must spend all points to complete character creation.");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.ReadKey();
+            
+            Console.WriteLine("Stats and their affects are as follows;");
+            Console.WriteLine();
+            Console.WriteLine("Strength:\tDetermines how much damage you do and how much you can carry.");
+            Console.WriteLine("Intelligence:\tDetermines how much XP you earn and your total mana.");
+            Console.WriteLine("Agility:\tDetermines your ability to avoid taking damage and your total stamina.");
+            Console.WriteLine("Constitution:\tDetermines how much health you have, the bonus from potions and your resistance to negative effects.");
+            Console.WriteLine("Charisma:\tDetermines the buying and selling prices at stores and your ability to convince people to see your way.");
+            Console.WriteLine("Luck:\t\tDetermines the likelihood of scoring a critical hit and has a chance to effect everything you do.");
+            Console.WriteLine();
+
+            int pointsRemaining = newCharSP;
 
             Console.Write("STRENGTH: ");
             int.TryParse(Console.ReadLine(), out int strengthChoice);
+            Console.WriteLine($"{pointsRemaining -= strengthChoice} points remaining.");
 
             Console.Write("INTELLIGENCE: ");
             int.TryParse(Console.ReadLine(), out int intelligenceChoice);
+            Console.WriteLine($"{pointsRemaining -= intelligenceChoice} points remaining.");
 
             Console.Write("AGILITY: ");
             int.TryParse(Console.ReadLine(), out int agilityChoice);
+            Console.WriteLine($"{pointsRemaining -= agilityChoice} points remaining.");
 
             Console.Write("CONSTITUTION: ");
             int.TryParse(Console.ReadLine(), out int constitutionChoice);
+            Console.WriteLine($"{pointsRemaining -= constitutionChoice} points remaining.");
 
             Console.Write("CHARISMA: ");
             int.TryParse(Console.ReadLine(), out int charismaChoice);
+            Console.WriteLine($"{pointsRemaining -= charismaChoice} points remaining.");
 
             Console.Write("LUCK: ");
             int.TryParse(Console.ReadLine(), out int luckChoice);
-
+            Console.WriteLine($"{pointsRemaining -= luckChoice} points remaining.");
             Console.WriteLine();
-            Console.WriteLine($"Str: {strengthChoice}, agi: {agilityChoice}, luck: {luckChoice}");
-            Console.ReadKey();
 
+            int totalSpend = strengthChoice + intelligenceChoice + agilityChoice + constitutionChoice + charismaChoice + luckChoice;
+
+            if (totalSpend == newCharSP)
+            {
+                strength = new Strength(strengthChoice);
+                intelligence = new Intelligence(intelligenceChoice);
+                agility = new Agility(agilityChoice);
+                constitution = new Constitution(constitutionChoice);
+                charisma = new Charisma(charismaChoice);
+                luck = new Luck(luckChoice);
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("You have spent all available skill points");
+                Console.ResetColor();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadKey();
+            } else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You have not spent all available skill points (or have spent too many)");
+                Console.ResetColor();
+                Console.WriteLine("Press any key to retry point allocation.");
+                Console.ReadKey();
+                CreateBaseStats();
+            }
         }
 
         private void GiveSkillPoints(int points)
@@ -220,11 +272,12 @@ namespace WarlordsOfDraemor
             Console.WriteLine("// CHARACTER STATS //");
             Console.ResetColor();
             Console.WriteLine();
-            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Strength:", strength, "Current Gold:", currentGold);
-            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Intelligence:", intelligence, "Current XP:", currentXP);
-            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Dexterity:", agility, "Next Level XP:", nextLevelXP);
-            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Constitution:", constitution, "Available SP:", skillPoints);
-            Console.WriteLine("{0, -20}{1, -20}", "Charisma:", charisma);
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Strength:", strength.GetEffectiveValue(), "Current Gold:", currentGold);
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Intelligence:", intelligence.GetEffectiveValue(), "Current XP:", currentXP);
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Dexterity:", agility.GetEffectiveValue(), "Next Level XP:", nextLevelXP);
+            Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Constitution:", constitution.GetEffectiveValue(), "Available SP:", skillPoints);
+            Console.WriteLine("{0, -20}{1, -20}", "Charisma:", charisma.GetEffectiveValue());
+            Console.WriteLine("{0, -20}{1, -20}", "Luck:", luck.GetEffectiveValue());
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.Yellow;
