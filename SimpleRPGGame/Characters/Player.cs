@@ -59,7 +59,7 @@ namespace WarlordsOfDraemor
         public void GainXP(int xpGained)
         {
             currentXP += xpGained;
-            Console.WriteLine($"You have gained {xpGained} XP.");
+            UI.DisplaySuccessText($"You have gained {xpGained} XP.");
             if (currentXP >= nextLevelXP)
             {
                 LevelUp();
@@ -72,7 +72,7 @@ namespace WarlordsOfDraemor
         public void GainGold(int amount)
         {
             currentGold += amount;
-            Console.WriteLine($"You have gained {amount} gold. Your purse now contains {currentGold}.");
+            UI.DisplayNoticeText($"You have gained {amount} gold. Your purse now contains {currentGold}.");
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace WarlordsOfDraemor
         public void SpendGold(int amount)
         {
             currentGold -= amount;
-            Console.WriteLine($"You have spent {amount} gold. Your purse now contains {currentGold}.");
+            UI.DisplayNoticeText($"You have spent {amount} gold. Your purse now contains {currentGold}.");
         }
 
         /// <summary>
@@ -110,13 +110,13 @@ namespace WarlordsOfDraemor
             temp *= 1.5;
             nextLevelXP = (int)temp;
             maxHealth += 5;
-            Console.WriteLine($"LEVEL UP! You are now level {level}! You have gained a skill point and +5 max HP!");
+            UI.DisplaySuccessText($"LEVEL UP! You are now level {level}! You have gained a skill point and +5 max HP!");
         }
 
         // DEATH 
         public void PlayerDeath()
         {
-            Console.WriteLine("You are dead! Press enter to return the Main Menu.");
+            UI.DisplayWarningText("You are dead! Press enter to return the Main Menu.");
             Console.ReadLine();
             Program.MainMenu();
         }
@@ -130,18 +130,23 @@ namespace WarlordsOfDraemor
         public void StartCharacterCreation()
         {
             UI.DisplayTitle("CHARACTER CREATION WIZARD (PART 1)", true);
+
             Console.WriteLine("Before your adventure throughout Draemor begins, you will create your character.");
+
             Console.WriteLine();
+
             Console.WriteLine("The following wizard will ask you some simple details, after which you will be shown your character sheet and your adventure can begin!");
-            Console.WriteLine("Press enter to continue");
-            Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("What is your characters name: ");
-            Console.ResetColor();
+
+            Console.WriteLine();
+
+            UI.DisplayNoticeText("Press any key to continue");
+            Console.ReadKey();
+            Console.WriteLine();
+
+            UI.DisplayInputText("What is your characters name:\t\t\t", true);
             name = Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("What is the name of your characters hometown: ");
-            Console.ResetColor();
+
+            UI.DisplayInputText("What is the name of your characters hometown:\t", true);
             homeName = Console.ReadLine();
 
             CreateBaseStats();
@@ -156,9 +161,11 @@ namespace WarlordsOfDraemor
             currentArmor = 0;
 
             Console.WriteLine();
-            Console.WriteLine("Character creation completed!");
-            Console.WriteLine("Press enter to continue and view your character sheet.");
-            Console.ReadLine();
+            UI.DisplaySuccessText("Character creation completed!");
+            Console.WriteLine();
+            UI.DisplayInputText("Press any key to continue and view your character sheet.");
+            Console.ReadKey();
+
             DisplayCharacterSheet();
             FinaliseCharacterCreation();
         }
@@ -179,9 +186,7 @@ namespace WarlordsOfDraemor
 
             Console.WriteLine("You will now determine your characters base stats.");
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"You have {newCharSP} skill points available to spend. You must spend all points to complete character creation.");
-            Console.ResetColor();
+            UI.DisplayNoticeText($"You have {newCharSP} skill points available to spend. You must spend all points to complete character creation.");
             Console.WriteLine();
             
             UI.DisplaySubTitle("AVAILABLE CHARACTER STATS");
@@ -196,38 +201,41 @@ namespace WarlordsOfDraemor
             Console.WriteLine("Luck:\t\tDetermines the likelihood of scoring a critical hit and has a chance to effect everything you do.");
             Console.WriteLine();
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("// STAT POINT ALLOCATION //");
-            Console.ResetColor();
+            UI.DisplaySubTitle("STAT POINT ALLOCATION");
             Console.WriteLine();
             Console.WriteLine("You will be shown each stat in turn. Please enter the number of skill points you would like to allocate to each skill as a whole number (i.e 4);");
             Console.WriteLine();
 
             int pointsRemaining = newCharSP;
 
-            Console.Write("STRENGTH: ");
+            UI.DisplayInputText("STRENGTH:\t", true);
             int.TryParse(Console.ReadLine(), out int strengthChoice);
-            Console.WriteLine($"{pointsRemaining -= strengthChoice} points remaining.");
+            UI.DisplayNoticeText($"{pointsRemaining -= strengthChoice} points remaining.");
+            Console.WriteLine();
 
-            Console.Write("INTELLIGENCE: ");
+            UI.DisplayInputText("INTELLIGENCE:\t", true);
             int.TryParse(Console.ReadLine(), out int intelligenceChoice);
-            Console.WriteLine($"{pointsRemaining -= intelligenceChoice} points remaining.");
+            UI.DisplayNoticeText($"{pointsRemaining -= intelligenceChoice} points remaining.");
+            Console.WriteLine();
 
-            Console.Write("AGILITY: ");
+            UI.DisplayInputText("AGILITY:\t", true);
             int.TryParse(Console.ReadLine(), out int agilityChoice);
-            Console.WriteLine($"{pointsRemaining -= agilityChoice} points remaining.");
+            UI.DisplayNoticeText($"{pointsRemaining -= agilityChoice} points remaining.");
+            Console.WriteLine();
 
-            Console.Write("CONSTITUTION: ");
+            UI.DisplayInputText("CONSTITUTION:\t", true);
             int.TryParse(Console.ReadLine(), out int constitutionChoice);
-            Console.WriteLine($"{pointsRemaining -= constitutionChoice} points remaining.");
+            UI.DisplayNoticeText($"{pointsRemaining -= constitutionChoice} points remaining.");
+            Console.WriteLine();
 
-            Console.Write("CHARISMA: ");
+            UI.DisplayInputText("CHARISMA:\t", true);
             int.TryParse(Console.ReadLine(), out int charismaChoice);
-            Console.WriteLine($"{pointsRemaining -= charismaChoice} points remaining.");
+            UI.DisplayNoticeText($"{pointsRemaining -= charismaChoice} points remaining.");
+            Console.WriteLine();
 
-            Console.Write("LUCK: ");
+            UI.DisplayInputText("LUCK:\t", true);
             int.TryParse(Console.ReadLine(), out int luckChoice);
-            Console.WriteLine($"{pointsRemaining -= luckChoice} points remaining.");
+            UI.DisplayNoticeText($"{pointsRemaining -= luckChoice} points remaining.");
             Console.WriteLine();
 
             int totalSpend = strengthChoice + intelligenceChoice + agilityChoice + constitutionChoice + charismaChoice + luckChoice;
@@ -241,45 +249,26 @@ namespace WarlordsOfDraemor
                 charisma = new Charisma(charismaChoice);
                 luck = new Luck(luckChoice);
 
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("You have spent all available skill points");
-                Console.ResetColor();
+                UI.DisplaySuccessText("You have spent all available skill points");
             } else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("You have not spent all available skill points (or have spent too many)");
-                Console.ResetColor();
-                Console.WriteLine("Press any key to retry point allocation.");
+                UI.DisplayWarningText("You have not spent all available skill points (or have spent too many)");
+                UI.DisplayInputText("Press any key to retry point allocation.");
                 Console.ReadKey();
                 CreateBaseStats();
             }
         }
 
-        private void GiveSkillPoints(int points)
-        {
-            skillPoints += points;
-        }
-
         // DISPLAY CHARACTER SHEET
         public void DisplayCharacterSheet()
         {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("CHARACTER SHEET");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplayTitle("CHARACTER SHEET");
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("// CHARACTER BIO //");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplaySubTitle("CHARACTER BIO");
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Character Name:", name, "Hometown:", homeName);
             Console.WriteLine();
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("// CHARACTER STATS //");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplaySubTitle("CHARACTER STATS");
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Strength:", strength.GetEffectiveValue(), "Current Gold:", currentGold);
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Intelligence:", intelligence.GetEffectiveValue(), "Current XP:", currentXP);
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Dexterity:", agility.GetEffectiveValue(), "Next Level XP:", nextLevelXP);
@@ -288,27 +277,19 @@ namespace WarlordsOfDraemor
             Console.WriteLine("{0, -20}{1, -20}", "Luck:", luck.GetEffectiveValue());
             Console.WriteLine();
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("// CURRENT STATUS //");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplaySubTitle("CURRENT STATUS");
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Current Health:", currentHealth, "Max Health:", maxHealth);
             Console.WriteLine();
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("// EQUIPMENT //");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplaySubTitle("EQUIPMENT");
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Helmet:", GetItemPresence(helmet), "Weapon:", GetItemPresence(weapon));
             Console.WriteLine("{0, -20}{1, -20}{2, -20}{3, -20}", "Chest:", GetItemPresence(chest), "Shield:", GetItemPresence(shield));
             Console.WriteLine("{0, -20}{1, -20}", "Gauntlets:", GetItemPresence(gauntlets));
             Console.WriteLine("{0, -20}{1, -20}", "Boots:", GetItemPresence(legs));
             Console.WriteLine("{0, -20}{1, -20}", "TOTAL DEFENCE:", getTotalArmorRating());
             Console.WriteLine();
-
-            Console.WriteLine();
-
-            Console.WriteLine("Press any key to continue.");
+            
+            UI.DisplayInputText("Press any key to continue.");
             Console.ReadKey();
         }
 
