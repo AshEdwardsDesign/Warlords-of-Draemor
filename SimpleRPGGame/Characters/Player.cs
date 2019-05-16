@@ -124,25 +124,26 @@ namespace WarlordsOfDraemor
         // CHARACTER CREATION
         public Player()
         {
-            string title = "CHARACTER CREATION WIZARD (PART 1)";
-            string seperator = new string('#', title.Length);
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(seperator);
-            Console.WriteLine(title);
-            Console.WriteLine(seperator);
-            Console.ResetColor();
+            StartCharacterCreation();
+        }
 
-            Console.WriteLine();
+        public void StartCharacterCreation()
+        {
+            UI.DisplayTitle("CHARACTER CREATION WIZARD (PART 1)", true);
             Console.WriteLine("Before your adventure throughout Draemor begins, you will create your character.");
             Console.WriteLine();
             Console.WriteLine("The following wizard will ask you some simple details, after which you will be shown your character sheet and your adventure can begin!");
+            Console.WriteLine("Press enter to continue");
             Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("What is your characters name: ");
+            Console.ResetColor();
             name = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("What is the name of your characters hometown: ");
+            Console.ResetColor();
             homeName = Console.ReadLine();
-            
+
             CreateBaseStats();
 
             level = 1;
@@ -159,21 +160,22 @@ namespace WarlordsOfDraemor
             Console.WriteLine("Press enter to continue and view your character sheet.");
             Console.ReadLine();
             DisplayCharacterSheet();
+            FinaliseCharacterCreation();
+        }
+
+        public void FinaliseCharacterCreation()
+        {
+            Console.Clear();
+            Console.WriteLine("Finish character creation and start your adventure [Y/N]? ");
+            string choice = Console.ReadLine().ToLower();
+            if (choice == "n") StartCharacterCreation();
         }
 
         private void CreateBaseStats()
         {
             int newCharSP = 20;
-
-            string title = "CHARACTER CREATION WIZARD (PART 2)";
-            string seperator = new string('#', title.Length);
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(seperator);
-            Console.WriteLine(title);
-            Console.WriteLine(seperator);
-            Console.ResetColor();
-            Console.WriteLine();
+            
+            UI.DisplayTitle("CHARACTER CREATION WIZARD (PART 2)", true);
 
             Console.WriteLine("You will now determine your characters base stats.");
             Console.WriteLine();
@@ -181,8 +183,9 @@ namespace WarlordsOfDraemor
             Console.WriteLine($"You have {newCharSP} skill points available to spend. You must spend all points to complete character creation.");
             Console.ResetColor();
             Console.WriteLine();
-            Console.ReadKey();
             
+            UI.DisplaySubTitle("AVAILABLE CHARACTER STATS");
+
             Console.WriteLine("Stats and their affects are as follows;");
             Console.WriteLine();
             Console.WriteLine("Strength:\tDetermines how much damage you do and how much you can carry.");
@@ -191,6 +194,13 @@ namespace WarlordsOfDraemor
             Console.WriteLine("Constitution:\tDetermines how much health you have, the bonus from potions and your resistance to negative effects.");
             Console.WriteLine("Charisma:\tDetermines the buying and selling prices at stores and your ability to convince people to see your way.");
             Console.WriteLine("Luck:\t\tDetermines the likelihood of scoring a critical hit and has a chance to effect everything you do.");
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("// STAT POINT ALLOCATION //");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine("You will be shown each stat in turn. Please enter the number of skill points you would like to allocate to each skill as a whole number (i.e 4);");
             Console.WriteLine();
 
             int pointsRemaining = newCharSP;
@@ -234,8 +244,6 @@ namespace WarlordsOfDraemor
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("You have spent all available skill points");
                 Console.ResetColor();
-                Console.WriteLine("Press any key to continue.");
-                Console.ReadKey();
             } else
             {
                 Console.ForegroundColor = ConsoleColor.Red;

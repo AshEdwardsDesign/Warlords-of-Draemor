@@ -12,11 +12,7 @@ namespace WarlordsOfDraemor
         public static void MainMenu()
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("###################");
-            Console.WriteLine("WARLORDS OF DRAEMOR");
-            Console.WriteLine("###################");
-            Console.ResetColor();
+            UI.DisplayTitle("WARLORDS OF DRAEMOR");
             Console.WriteLine("Welcome to Warlords of Draemor; A text-based fantasy RPG.");
 
             Console.WriteLine();
