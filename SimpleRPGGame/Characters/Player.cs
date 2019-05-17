@@ -129,7 +129,7 @@ namespace WarlordsOfDraemor
 
         public void StartCharacterCreation()
         {
-            UI.DisplayTitle("CHARACTER CREATION WIZARD (PART 1)", true);
+            UI.DisplayTitle("CHARACTER CREATION WIZARD", true);
 
             Console.WriteLine("Before your adventure throughout Draemor begins, you will create your character.");
 
@@ -139,7 +139,7 @@ namespace WarlordsOfDraemor
 
             Console.WriteLine();
 
-            UI.DisplayNoticeText("Press any key to continue");
+            UI.DisplayInputText("Press any key to continue");
             Console.ReadKey();
             Console.WriteLine();
 
@@ -172,8 +172,8 @@ namespace WarlordsOfDraemor
 
         public void FinaliseCharacterCreation()
         {
-            Console.Clear();
-            Console.WriteLine("Finish character creation and start your adventure [Y/N]? ");
+            UI.DisplayTitle("FINISH CHARACTER CREATION?");
+            UI.DisplayInputText("Finish character creation and start your adventure [Y/N]? ");
             string choice = Console.ReadLine().ToLower();
             if (choice == "n") StartCharacterCreation();
         }
@@ -182,13 +182,16 @@ namespace WarlordsOfDraemor
         {
             int newCharSP = 20;
             
-            UI.DisplayTitle("CHARACTER CREATION WIZARD (PART 2)", true);
+            UI.DisplayTitle("CHARACTER CREATION WIZARD", true);
 
             Console.WriteLine("You will now determine your characters base stats.");
             Console.WriteLine();
             UI.DisplayNoticeText($"You have {newCharSP} skill points available to spend. You must spend all points to complete character creation.");
             Console.WriteLine();
-            
+            UI.DisplayInputText("Press any key to continue.");
+            Console.ReadKey();
+
+            UI.DisplayTitle("CHARACTER CREATION WIZARD", true);
             UI.DisplaySubTitle("AVAILABLE CHARACTER STATS");
 
             Console.WriteLine("Stats and their affects are as follows;");
@@ -199,6 +202,9 @@ namespace WarlordsOfDraemor
             Console.WriteLine("Constitution:\tDetermines how much health you have, the bonus from potions and your resistance to negative effects.");
             Console.WriteLine("Charisma:\tDetermines the buying and selling prices at stores and your ability to convince people to see your way.");
             Console.WriteLine("Luck:\t\tDetermines the likelihood of scoring a critical hit and has a chance to effect everything you do.");
+            Console.WriteLine();
+            UI.DisplayInputText("Press any key to continue.");
+            Console.ReadKey();
             Console.WriteLine();
 
             UI.DisplaySubTitle("STAT POINT ALLOCATION");
@@ -233,7 +239,7 @@ namespace WarlordsOfDraemor
             UI.DisplayNoticeText($"{pointsRemaining -= charismaChoice} points remaining.");
             Console.WriteLine();
 
-            UI.DisplayInputText("LUCK:\t", true);
+            UI.DisplayInputText("LUCK:\t\t", true);
             int.TryParse(Console.ReadLine(), out int luckChoice);
             UI.DisplayNoticeText($"{pointsRemaining -= luckChoice} points remaining.");
             Console.WriteLine();
@@ -308,13 +314,7 @@ namespace WarlordsOfDraemor
         public void DisplayPlayerMenu()
         {
             // Clear the screen and display the header bar
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("##########");
-            Console.WriteLine("CHARACTER MENU");
-            Console.WriteLine("##########");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplayTitle("CHARACTER MENU");
 
             // List the choices available
             Console.WriteLine("1. View Inventory");
@@ -323,7 +323,7 @@ namespace WarlordsOfDraemor
 
             // Get the players choice
             Console.WriteLine();
-            Console.Write("Please choose an option: ");
+            UI.DisplayInputText("Please choose an option: ");
             string choice = Console.ReadLine().ToLower();
 
             if (choice == "inventory" || choice == "1")
@@ -342,10 +342,8 @@ namespace WarlordsOfDraemor
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Sorry, I dont' recognise that option.");
-                Console.ResetColor();
-                Console.WriteLine("Press any key to try again.");
+                UI.DisplayWarningText("Sorry, I dont' recognise that option.");
+                UI.DisplayInputText("Press any key to try again.");
                 Console.ReadKey();
                 DisplayPlayerMenu();
             }
@@ -356,13 +354,7 @@ namespace WarlordsOfDraemor
         public void DisplayInventory()
         {
             // Clear the screen and display the header bar
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("##########");
-            Console.WriteLine("INVENTORY");
-            Console.WriteLine("##########");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplayTitle("INVENTORY");
 
             // Menu options
             Console.WriteLine("1. Display All");
@@ -374,7 +366,7 @@ namespace WarlordsOfDraemor
             Console.WriteLine();
 
             // Get the players choice
-            Console.Write("Please choose an option: ");
+            UI.DisplayInputText("Please choose an option: ");
             string choice = Console.ReadLine().ToLower();
 
             if (choice == "1" || choice == "all")
@@ -403,10 +395,8 @@ namespace WarlordsOfDraemor
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Sorry, I don't recognise that option");
-                Console.ResetColor();
-                Console.WriteLine("Press any key to try again.");
+                UI.DisplayWarningText("Sorry, I don't recognise that option");
+                UI.DisplayInputText("Press any key to try again.");
                 Console.ReadKey();
                 DisplayInventory();
             }
@@ -415,13 +405,7 @@ namespace WarlordsOfDraemor
         public void DisplayAll()
         {
             // Clear the screen and display the header bar
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("##########");
-            Console.WriteLine("INVENTORY > All items");
-            Console.WriteLine("##########");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplayTitle("INVENTORY > All items");
 
             // Populate the list
             int count = 1;
@@ -437,15 +421,13 @@ namespace WarlordsOfDraemor
                     count++;
                 }
                 Console.WriteLine();
-                Console.WriteLine("Please choose an option (or cancel): ");
+                UI.DisplayInputText("Please choose an option (or cancel): ");
                 Console.ReadKey();
             }
             else
             {
-
-                Console.WriteLine("You don't have anything in your inventory.");
-                Console.ResetColor();
-                Console.WriteLine("Press any key to go back.");
+                UI.DisplayWarningText("You don't have anything in your inventory.");
+                UI.DisplayInputText("Press any key to go back.");
                 Console.ReadKey();
                 DisplayInventory();
             }
@@ -455,13 +437,7 @@ namespace WarlordsOfDraemor
         public void DisplayWeapons()
         {
             // Clear the screen and display the header bar
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("##########");
-            Console.WriteLine("INVENTORY > Weapons");
-            Console.WriteLine("##########");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplayTitle("INVENTORY > Weapons");
 
 
             // Populate the list
@@ -480,15 +456,13 @@ namespace WarlordsOfDraemor
                     count++;
                 }
                 Console.WriteLine();
-                Console.WriteLine("Please choose an option (or cancel): ");
+                UI.DisplayInputText("Please choose an option (or cancel): ");
                 Console.ReadKey();
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("You don't have any weapons in your inventory.");
-                Console.ResetColor();
-                Console.WriteLine("Press any key to go back.");
+                UI.DisplayWarningText("You don't have any weapons in your inventory.");
+                UI.DisplayInputText("Press any key to go back.");
                 Console.ReadKey();
                 DisplayInventory();
             }
@@ -497,13 +471,7 @@ namespace WarlordsOfDraemor
         public void DisplayArmors()
         {
             // Clear the screen and display the header bar
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("##########");
-            Console.WriteLine("INVENTORY > Armor");
-            Console.WriteLine("##########");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplayTitle("INVENTORY > Armor");
 
             // Populate the list
             int count = 1;
@@ -521,15 +489,13 @@ namespace WarlordsOfDraemor
                     count++;
                 }
                 Console.WriteLine();
-                Console.WriteLine("Please choose an option (or cancel): ");
+                UI.DisplayInputText("Please choose an option (or cancel): ");
                 Console.ReadKey();
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("You don't have any armor in your inventory.");
-                Console.ResetColor();
-                Console.WriteLine("Press any key to go back.");
+                UI.DisplayWarningText("You don't have any armor in your inventory.");
+                UI.DisplayInputText("Press any key to go back.");
                 Console.ReadKey();
                 DisplayInventory();
             }
@@ -538,13 +504,7 @@ namespace WarlordsOfDraemor
         public void DisplayBooks()
         {
             // Clear the screen and display the header bar
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("##########");
-            Console.WriteLine("INVENTORY > Books");
-            Console.WriteLine("##########");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplayTitle("INVENTORY > Books");
 
             // Populate the list
             int count = 1;
@@ -562,15 +522,13 @@ namespace WarlordsOfDraemor
                     count++;
                 }
                 Console.WriteLine();
-                Console.WriteLine("Please choose an option (or cancel): ");
+                UI.DisplayInputText("Please choose an option (or cancel): ");
                 Console.ReadKey();
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("You don't have any books in your inventory.");
-                Console.ResetColor();
-                Console.WriteLine("Press any key to go back.");
+                UI.DisplayWarningText("You don't have any books in your inventory.");
+                UI.DisplayInputText("Press any key to go back.");
                 Console.ReadKey();
                 DisplayInventory();
             }
@@ -579,13 +537,7 @@ namespace WarlordsOfDraemor
         public void DisplayPotions()
         {
             // Clear the screen and display the header bar
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("##########");
-            Console.WriteLine("INVENTORY > Potions");
-            Console.WriteLine("##########");
-            Console.ResetColor();
-            Console.WriteLine();
+            UI.DisplayTitle("INVENTORY > Potions");
 
             // Populate the list
             int count = 1;
@@ -603,15 +555,13 @@ namespace WarlordsOfDraemor
                     count++;
                 }
                 Console.WriteLine();
-                Console.WriteLine("Please choose an option (or cancel): ");
+                UI.DisplayInputText("Please choose an option (or cancel): ");
                 Console.ReadKey();
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("You don't have any potions in your inventory.");
-                Console.ResetColor();
-                Console.WriteLine("Press any key to go back.");
+                UI.DisplayWarningText("You don't have any potions in your inventory.");
+                UI.DisplayInputText("Press any key to go back.");
                 Console.ReadKey();
                 DisplayInventory();
             }
