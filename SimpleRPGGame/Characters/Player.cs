@@ -14,9 +14,10 @@ namespace WarlordsOfDraemor
 
         // LOCATIONS
         private Location currentLocation;
+        private List<Location> discoveredLocations = new List<Location>();
 
         /// <summary>
-        /// Set's the players current location and display the locations menu.
+        /// Set's the players current location and displays the location's menu.
         /// </summary>
         /// <param name="loc">The location the player is travelling to.</param>
         public void SetLocation(Location loc)
@@ -32,6 +33,26 @@ namespace WarlordsOfDraemor
         public Location GetLocation()
         {
             return currentLocation;
+        }
+
+        /// <summary>
+        /// Add the location to the players list of discovered locations.
+        /// </summary>
+        /// <param name="location"></param>
+        public void addDiscoveredLocation(Location location)
+        {
+            discoveredLocations.Add(location);
+            UI.DisplayNoticeText($"You have discovered a new location: {location.GetName()}");
+            Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Get the list of locations discovered by the player.
+        /// </summary>
+        /// <returns></returns>
+        public List<Location> getDiscoveredLocations()
+        {
+            return discoveredLocations;
         }
 
         // INVENTORY

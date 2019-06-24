@@ -10,6 +10,7 @@ namespace WarlordsOfDraemor
             Player player = new Player();
             PlayIntro(player);
             Location foxHound = WorldLocations.GetAllLocations().Find(v => v.GetName() == "Fox & Hound");
+            player.addDiscoveredLocation(foxHound);
             player.SetLocation(foxHound);
         }
 

@@ -14,10 +14,10 @@ namespace WarlordsOfDraemor
             Console.WriteLine($"Your current location: {player.GetLocation().GetName()}");
             Console.WriteLine();
 
-            // Grab a list of all locations in the world
-            List<Location> allLocs = WorldLocations.GetAllLocations();
+            // Grab a list of all discovered locations
+            List<Location> allLocs = player.getDiscoveredLocations();
 
-            // Populate the travel screen with a numbered list of all locations
+            // Populate the travel screen with a numbered list of all discovered locations
             int count = 1;
             foreach (Location loc in allLocs)
             {
