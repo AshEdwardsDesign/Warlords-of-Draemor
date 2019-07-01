@@ -4,10 +4,25 @@ namespace WarlordsOfDraemor
 {
     public static class Combat
     {
-        public static void StartCombat(Player player)
+        public static void CombatCheck(Player player)
         {
+            bool combatAvoided = false;
 
-            Enemy enemy = new Enemy(player); 
+            if (combatAvoided)
+            {
+                Console.WriteLine("You have avoided combat!");
+            } else
+            {
+                Console.WriteLine("Combat is beginning...");
+                Enemy enemy = new Enemy(player);
+                Console.ReadLine();
+                StartCombat(player, enemy);
+            }
+            
+        }
+
+        public static void StartCombat(Player player, Enemy enemy)
+        {
 
             while (player.isAlive && enemy.isAlive)
             {
@@ -41,7 +56,7 @@ namespace WarlordsOfDraemor
                     Loot.DisplayLootScreen(player, enemy);
                     return;
                 }
-                
+
                 enemy.DealDamage(player);
                 DisplayCombatScreen(player, enemy);
                 Console.WriteLine($"Enemy hits. Player health = {player.GetHealth()}");
@@ -52,15 +67,29 @@ namespace WarlordsOfDraemor
 
         private static void DisplayCombatScreen(Player player, Enemy enemy)
         {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("###########");
-            Console.WriteLine("COMBAT MODE");
-            Console.WriteLine("###########");
-            Console.ResetColor();
+            UI.DisplayTitle("COMBAT MODE", true);
+
+            UI.DisplayNoticeText("PLAYER\t\t\tENEMY");
+            Console.WriteLine();
 
             Console.WriteLine($"Player Name: {player.GetName()}\t\t\tEnemy Class: {enemy.GetEnemyClass()}");
             Console.WriteLine($"Player Health: {player.GetHealth()}\t\t\tEnemy Health: {enemy.GetHealth()}");
+            Console.WriteLine($"Player Armor: {player.getTotalArmorRating()}\t\t\tEnemy Armor: {enemy.getTotalArmorRating()}");
+            Console.WriteLine(
+                $"Player Stats (Agi, Chr, Con, Int, Lck, Str): " +
+                $"{player.GetEffectiveAgility()}, " +
+                $"{player.GetEffectiveCharisma()}, " +
+                $"{player.GetEffectiveConstitution()}, " +
+                $"{player.GetEffectiveIntelligence()}, " +
+                $"{player.GetEffectiveLuck()}, " +
+                $"{player.GetEffectiveStrength()}" +
+                $"\t\t\tEnemy Stats (Agi, Chr, Con, Int, Lck, Str): " +
+                $"{enemy.GetEffectiveAgility()}, " +
+                $"{enemy.GetEffectiveCharisma()}, " +
+                $"{enemy.GetEffectiveConstitution()}, " +
+                $"{enemy.GetEffectiveIntelligence()}, " +
+                $"{enemy.GetEffectiveLuck()}, " +
+                $"{enemy.GetEffectiveStrength()}");
             Console.WriteLine();
         }
 

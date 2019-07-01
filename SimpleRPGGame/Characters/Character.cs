@@ -81,12 +81,144 @@ namespace WarlordsOfDraemor
         {
             int total = 0;
 
-            if (helmet != null) total += helmet.GetArmorRating();
-            if (chest != null) total += chest.GetArmorRating();
-            if (gauntlets != null) total += gauntlets.GetArmorRating();
-            if (legs != null) total += legs.GetArmorRating();
+            if (helmet != null)
+            {
+                total += helmet.GetArmorRating();
+            }
+
+            if (chest != null)
+            {
+                total += chest.GetArmorRating();
+            }
+
+            if (gauntlets != null)
+            {
+                total += gauntlets.GetArmorRating();
+            }
+
+            if (legs != null)
+            {
+                total += legs.GetArmorRating();
+            }
 
             return total;
+        }
+
+        /// <summary>
+        /// Get the characters base Strength value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetBaseStrength()
+        {
+            return strength.GetBaseValue();
+        }
+
+        /// <summary>
+        /// Get the characters base Intelligence value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetBaseIntelligence()
+        {
+            return intelligence.GetBaseValue();
+        }
+
+        /// <summary>
+        /// Get the characters base Agility value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetBaseAgility()
+        {
+            return agility.GetBaseValue();
+        }
+
+        /// <summary>
+        /// Get the characters base Constitution value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetBaseConstitution()
+        {
+            return constitution.GetBaseValue();
+        }
+
+        /// <summary>
+        /// Get the characters base Luck value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetBaseLuck()
+        {
+            return luck.GetBaseValue();
+        }
+
+        /// <summary>
+        /// Get the characters base Charisma value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetBaseCharisma()
+        {
+            return charisma.GetBaseValue();
+        }
+
+        /// <summary>
+        /// Get the characters maximum health.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetMaxHealth()
+        {
+            return maxHealth;
+        }
+
+        /// <summary>
+        /// Get the characters effective  Strength value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetEffectiveStrength()
+        {
+            return strength.GetEffectiveValue();
+        }
+
+        /// <summary>
+        /// Get the characters effective Intelligence value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetEffectiveIntelligence()
+        {
+            return intelligence.GetEffectiveValue();
+        }
+
+        /// <summary>
+        /// Get the characters effective Agility value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetEffectiveAgility()
+        {
+            return agility.GetEffectiveValue();
+        }
+
+        /// <summary>
+        /// Get the characters base Constitution value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetEffectiveConstitution()
+        {
+            return constitution.GetEffectiveValue();
+        }
+
+        /// <summary>
+        /// Get the characters base Luck value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetEffectiveLuck()
+        {
+            return luck.GetEffectiveValue();
+        }
+
+        /// <summary>
+        /// Get the characters base Charisma value.
+        /// </summary>
+        /// <returns></returns>
+        internal int GetEffectiveCharisma()
+        {
+            return charisma.GetEffectiveValue();
         }
 
     }

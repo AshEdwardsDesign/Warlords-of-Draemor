@@ -6,7 +6,7 @@ namespace WarlordsOfDraemor
     {
         protected int baseValue = 1;                // The base value of the given stat. I.e. Strength = 5;
         protected int EffectiveValue;               // The base value + all modifiers. If the player has a piece of armor that adds 2, effective strength = 7;
-        protected List<StatModifier> modifiers;     // A list of all modifiers currently in effect (i.e. from armor, weapons, status effects.
+        protected List<StatModifier> modifiers;     // A list of all modifiers currently in effect (i.e. from armor, weapons, status effects, etc).
 
         /// <summary>
         /// Stat Constructor. Just needs an int value.

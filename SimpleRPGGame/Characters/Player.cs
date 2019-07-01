@@ -26,41 +26,6 @@ namespace WarlordsOfDraemor
             loc.ShowLocationMenu(this);
         }
 
-        internal int GetBaseStrength()
-        {
-            return strength.GetBaseValue();
-        }
-
-        internal int GetBaseIntelligence()
-        {
-            return intelligence.GetBaseValue();
-        }
-
-        internal int GetBaseAgility()
-        {
-            return agility.GetBaseValue();
-        }
-
-        internal int GetBaseConstitution()
-        {
-            return constitution.GetBaseValue();
-        }
-
-        internal int GetBaseLuck()
-        {
-            return luck.GetBaseValue();
-        }
-
-        internal int GetMaxHealth()
-        {
-            return maxHealth;
-        }
-
-        internal int GetBaseCharisma()
-        {
-            return charisma.GetBaseValue();
-        }
-
         /// <summary>
         /// Returns the players current location.
         /// </summary>
