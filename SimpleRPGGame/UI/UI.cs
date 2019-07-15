@@ -48,7 +48,7 @@ namespace WarlordsOfDraemor
 
         public static void DisplayWarningText(string text)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(text.ToUpper());
             Console.ResetColor();
         }

@@ -13,19 +13,17 @@ namespace WarlordsOfDraemor
         {
             Console.Clear();
             UI.DisplayTitle("WARLORDS OF DRAEMOR");
-            Console.WriteLine("Welcome to Warlords of Draemor; A text-based fantasy RPG.");
+            UI.DisplaySubTitle("Welcome to Warlords of Draemor; A text-based fantasy RPG.");
 
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("MAIN MENU");
-            Console.ResetColor();
+            UI.DisplayTitle("MAIN MENU");
             Console.WriteLine();
 
             Console.WriteLine("1. New Game");
             Console.WriteLine("2. Quit");
             Console.WriteLine();
 
-            Console.Write("Please choose a number: ");
+            UI.DisplayNoticeText("Please choose a number: ");
             string mainMenuChoice = Console.ReadLine();
 
             switch (mainMenuChoice)
@@ -35,19 +33,16 @@ namespace WarlordsOfDraemor
                     break;
                 case "2":
                     Console.Clear();
-                    Console.WriteLine("THANK YOU FOR PLAYING! :)");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Please press enter to exit the application.");
-                    Console.ResetColor();
+                    UI.DisplaySuccessText("THANK YOU FOR PLAYING! :)");
+                    UI.DisplayNoticeText("Please press enter to exit the application.");
                     Console.ReadLine();
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Sorry, I didn't recognise that option!");
-                    Console.ResetColor();
-                    Console.WriteLine("Press any key to try again.");
-                    Console.ReadKey();
+                    UI.DisplayWarningText("Sorry, I didn't recognise that option!");
+                    UI.DisplayInputText("Press any key to try again.");
+                    Console.ReadLine();
                     MainMenu();
                     break;
             }

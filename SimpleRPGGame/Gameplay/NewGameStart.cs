@@ -17,17 +17,13 @@ namespace WarlordsOfDraemor
         public static void PlayIntro(Player player)
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("A JOURNEY BEGINS...");
-            Console.ResetColor();
+            UI.DisplayTitle("A JOURNEY BEGINS...");
             Console.WriteLine("This is the intro, which will have you fight an enemy and overcome a puzzle before reaching the Fox & Hound.");
-            Console.WriteLine("To be implemented.");
+            UI.DisplayWarningText("To be implemented.");
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("A combat trial will now begin...");
-            Console.ResetColor();
+            UI.DisplayWarningText("A combat trial will now begin...");
             Console.ReadLine();
-            Combat.StartCombat(player);
+            Combat.CombatCheck(player);
         }
     }
 }
