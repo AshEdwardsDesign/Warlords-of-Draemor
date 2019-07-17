@@ -95,7 +95,8 @@
     <Compile Include="Gameplay\Locations\Hub.cs" />
     <Compile Include="Gameplay\Locations\WorldLocations.cs" />
     <Compile Include="Gameplay\Locations\LocationTypes\Village.cs" />
-    <Compile Include="UI\UI.cs" />
+    <Compile Include="Utils\ExtensionMethods.cs" />
+    <Compile Include="Utils\UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
